@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<title>写bug的代码人的网站</title>
+
+<div class="container">
+	<div class="row">
+		<div class="span5">
+			<img alt="150X80" src="a.jpg" />
+		</div>
+		<div class="span7">
+			<h1 class="text-left">
+				写bug的代码人的网站
+			</h1>
+			<h1>
+				bugcoder's personal website
+			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+			<p>
+				<strong>公告：</strong>
+			</p>
+			<p>
+1.本站已由bugcoder.ml迁移到bugcoder.gq
+		</p>
+		<p>
+2.站长由于学业繁忙（中考），暂时停止对网站的建设，感谢支持。
+		</p>
+		<p>
+3.若发现网站出现不良信息、疑似被入侵、访问出错或有问题，麻烦火速联系站长：
+		</p>
+		<p>
+		邮箱  391923621@qq.com
+		</p>
+		</div>
+	</div>
+</div>
+		<h1 id="hh"></h1>
+	</body>
+	<script type="text/javascript">
+		function station(x,y,z){
+			//当前时间
+			var now = Date.now(),
+				//结束时间
+				end = new Date(x,y-1,z),
+				ends = end.getTime();
+			var ss = ends - now;
+			var s = Math.floor(ss/1000);
+			//相差天数
+			var day = Math.floor(s / 60 / 60 / 24);
+			//相差小时数
+			var hours = Math.floor(s / 60 / 60 % 24);
+			//相差分钟数
+			var min = Math.floor(s / 60 % 60 );
+			//相差秒数
+			var sec = Math.floor(s % 60 );
+			var html = "距离2022河北中考还有"+day+"天"+hours+"时"+min+"分"+sec+"秒";
+			hh.innerHTML = html;
+
+		}
+		station(2022,06,21);
+		//一秒一次调用
+		setInterval(function(){
+			station(2022,06,21);
+		},1000);
+	</script>
+	<style type="text/css">
+		#hh{
+			font-size: 50px;
+			text-align: center;
+		}
+	</style>
+	<h1 id="hhh">让我们一起努力，共创辉煌！<h1>
+	<style type="text/css">
+		#hhh{
+			font-size: 50px;
+			text-align: center;
+		}
+	</style>
+	
+
+
+</html>
