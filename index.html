@@ -38,40 +38,13 @@
 </div>
 		<h1 id="hh"></h1>
 	</body>
-	<script type="text/javascript">
-		function station(x,y,z){
-			//当前时间
-			var now = Date.now(),
-				//结束时间
-				end = new Date(x,y-1,z),
-				ends = end.getTime();
-			var ss = ends - now;
-			var s = Math.floor(ss/1000);
-			//相差天数
-			var day = Math.floor(s / 60 / 60 / 24);
-			//相差小时数
-			var hours = Math.floor(s / 60 / 60 % 24);
-			//相差分钟数
-			var min = Math.floor(s / 60 % 60 );
-			//相差秒数
-			var sec = Math.floor(s % 60 );
-			var html = "距离2022河北中考还有"+day+"天"+hours+"时"+min+"分"+sec+"秒";
-			hh.innerHTML = html;
-
-		}
-		station(2022,06,21);
-		//一秒一次调用
-		setInterval(function(){
-			station(2022,06,21);
-		},1000);
-	</script>
 	<style type="text/css">
 		#hh{
 			font-size: 50px;
 			text-align: center;
 		}
 	</style>
-	<h1 id="hhh">让我们一起努力，共创辉煌！<h1>
+	<h1 id="hhh">中考结束啦！将在20天内更新<h1>
 	<style type="text/css">
 		#hhh{
 			font-size: 50px;
