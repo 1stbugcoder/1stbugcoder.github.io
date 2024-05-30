@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="zh-cn">
+    <head>
+        <title>友情链接 - 写bug的代码人</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="description" content="友情链接-写bug的代码人">
+        <link rel="icon" type="image/png" href="img/icon.ico">
+        <link id="theme" rel="stylesheet" type="text/css" href="css/article.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!--不太重要的引用文件-->
+        <script async src="https://analytics.umami.is/script.js" data-website-id="8fa97467-7636-45be-86c4-27951c22930a"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"> <!-- Header -->
+        <div class="header">
+            <a href="index.html"> <img src="img/logo.jpg" width="120" height="60" alt="LOGO"> </a>
+            <p></p>
+            <h1>写bug的代码人的博客</h1>
+        </div> <!-- 导航栏 -->
+        <ul class="navbar">
+            <li><a href="index.html"><i class="fa fa-home" style="color:#FFFFFF"></i>主页</a></li>
+            <li class="act"><a href="friends.html"><i class="fa fa-link" style="color:#FFFFFF"></i>友链</a></li>
+            <li><a href="talk.html">留言板</a></li>
+            <li><a href="about.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"><i class="fa fa-subway" style="color:#FFFFFF"></i>开往</a></li>
+            <li><a href="atom.xml"><i class="fa fa-rss" style="color:#FFFFFF"></i>RSS</a></li>
+        </ul> <!-- 弹性网格row（内容） -->
+        <div class="row">
+            <div class="main">
+                <p><i>一群狼走得远……</i>——🚇开往-友链接力</p>
+                <h2>友情链接申请规则</h2> <a onclick="display();">点击显示</a>
+                <p></p>
+                <script type="text/javascript">
+function display(){
+  var rule = document.getElementById('rule');//选取id
+  rule.style.display = 'block';// 以块级样式显示
+  }
+function hide(){
+  var rule = document.getElementById('rule');
+  rule.style.display = 'none';
+  }
+</script>
+                <div id="rule" style="display:none">
+                    <h3>#注意事项</h3>
+                    <p>1.申请站需确保站内<strong>所有内容均符合中华人民共和国法律</strong>，无暴力、黄色、恐怖、血腥，不良价值导向等不良内容。</p>
+                    <p>2.申请站需先在友情链接界面添加我站链接后再申请，否则不予处理。</p>
+                    <p>3.申请站<strong>不得</strong>在其友情链接中我站所在的a标签添加<code>rel="nofollow"</code>。否则，我站将永久删除申请站友情链接，且申请站不得再次向我站申请。</p>
+                    <p>4.申请格式</p> <i> <p>博客名称：写bug的代码人</p> <p>博客地址：https://bugcoder.asia/</p> <p>博客Logo：https://bugcoder.asia/headLogo.jpg</p> <p>博客简介：没有比这再简陋的网站了</p> <p>联系方式：bugcoderx@qq.com</p> </i>
+                    <h3>#违反后果</h3>
+                    <p>若违反上述注意事项（有特殊规定违反后果的除外），我站将先对申请站进行警告，申请站未留下联系方式或警告无效的，则删除申请站友情链接。</p>
+                    <h3>#申请</h3>
+                    <p>若已知晓上述事宜，请到<a href="talk.html">留言板</a>申请友情链接</p> <a onclick="hide();">点击隐藏</a>
+                </div>
+                <h2>友情链接（随机顺序）</h2>
+                <div id="links"></div> <!--随机顺序-->
+                <script type="text/javascript">
+// 定义信息
+var friends = [];
+var w3school = {
+        "href": "https://www.w3school.com.cn/",
+        "name": "W3School",
+        "avatar": "https://www.w3school.com.cn/ui2019/logo-96-red.png",
+        "description": "领先的web技术教程"
+    };
+var qaiu = {
+        "href": "https://qaiu.top/",    //链接地址
+        "name": "千百度",    //博客名称
+        "avatar": "https://blog.qaiu.top/logo",    //网站图标
+        "description": "qaiu博客提供c4droid下载，以及手机编程相关资料"
+    };
+var bill = {
+        "href": "http://1703.site/",
+        "name": "bill的小站",
+        "avatar": "https://bu.dusays.com/2023/01/12/63bfea5b2418c.png",
+        "description": ""
+    };
+var rabbitwebs = {
+        "href": "https://blog.rabbitwebs.cn/",
+        "name": "兔say博客",
+        "avatar": "https://photo.tuerxuan.me/image.png",
+        "description": "摸鱼，躺平。"
+    };
+var yuanzj = {
+        "href": "https://yuanzj.top/",
+        "name": "圆周率的博客",
+        "avatar": "https://yuanzj.top/img/favicon.jpg",
+        "description": "My Blog!"
+    };
+var teror = {
+        "href": "https://blog.trfox.ml/",
+        "name": "Terorの客栈",
+        "avatar": "https://blog.trfox.ml/img/avatar.png",
+        "description": "方寸之间，深不见底"
+    };
+var ygxz = {
+        "href": "https://www.ygxz.in/",
+        "name": "一个小站",
+        "avatar": "https://www.ygxz.in/logo/logo1svg.svg",
+        "description": "在互联网上淘金！"
+    };
+var dvel = {
+        "href": "https://dvel.me/",
+        "name": "Dvel's Blog",
+        "avatar": "https://dvel.me/avatar.png",
+        "description": "Less is More."
+    };
+var teacherdu = {
+        "href": "https://dusays.com/",
+        "name": "杜老师说",
+        "avatar": "https://cdn.dusays.com/avatar.png",
+        "description": "师者，传道，授业，解惑！"
+    };
+var ltya = {
+        "href": "https://blog.ltya.top",
+        "name": "岚天小窝",
+        "avatar": "https://cravatar.cn/avatar/5af06b461740fb2bd7467b8561399703?s=500",
+        "description": "一只鸽子住在这里~"
+    };
+var abaing = {
+        "href": "https://abaing.top/",
+        "name": "阿巴de小站",
+        "avatar": "https://abaing.top/favicon.png",
+        "description": "随便写写~"
+    };
+
+var fgaoxing = {
+        "href": "https://www.yt-blog.top/",
+        "name": "Fgaoxing",
+        "avatar": "https://npm.elemecdn.com/ytblogimg/webp/logo.webp",
+        "description": "一个少年的博客"
+    };
+
+var jingdutiao ={
+        "href": "https://www.chinesehacker.org",
+        "name": "搅局’s blog",
+        "avatar": "https://www.chinesehacker.org/1000.jpg",
+        "description": "我寄愁心与明月，随君直到夜郎西"
+
+    }
+
+var binhongtea ={
+        "href": "https://blog.binhongtea.top/",
+        "name": "彬红茶博客",
+        "avatar": "https://blog.binhongtea.top/images/studio.png",
+        "description": "有趣的屎用博客doge"
+
+    }
+
+var yuanzui ={
+        "href": "https://blog.yzcf.top/",
+        "name": "原罪の异次元小窝",
+        "avatar": "https://blog.yzcf.top/upload/favicon.jpg",
+        "description": "(≧∇≦) b"
+
+    }
+
+var BOKEBO ={
+        "href": "https://bokebo.com",
+        "name": "BOKEBO",
+        "avatar": "https://bokebo.com/logo.png",
+        "description": "愉悦理性却又不轻浮"
+
+    }
+
+var Lafcadia ={
+        "href": "https://chuishen.xyz/",
+        "name": "Lafcadia’s Blog",
+        "avatar": "https://chuishen.xyz/img/logo.png",
+        "description": "神秘主义的故乡"
+
+    }
+
+// 这里将信息传入friends数组
+friends[0] = w3school;
+friends[1] = qaiu;
+//  friends[2] = bill;
+//  friends[3] = rabbitwebs;
+friends[4] = yuanzj;
+//  friends[5] = teror;
+friends[6] = ygxz;
+friends[7] = dvel;
+friends[8] = teacherdu;
+friends[9] = ltya;
+friends[10] = abaing;
+friends[11] = fgaoxing;
+friends[12] = jingdutiao;
+friends[13] = binhongtea;
+friends[14] = yuanzui;
+friends[15] = BOKEBO;
+friends[16] = Lafcadia;
+
+
+// 因为JavaScript和Python的语法不太一样，此段代码修改自https://cloud.tencent.com/developer/ask/sof/51291，且提问者问题已被更改
+function create(name,img,link,des) {
+    var total = document.createDocumentFragment(),
+        temp = document.createElement('div');
+    // 这里是友情链接的代码
+    temp.innerHTML = '<div class="article"><h2><span><img width="12%" height="12%" src="' +img+ '"></span><a href="' +link+ '">&nbsp;' +name+ '</a></h2><p>'+des+'</p></div>';
+    while (temp.firstChild) {
+        total.appendChild(temp.firstChild);
+      }
+        return total;
+    }
+
+// 打乱数组顺序
+friends.sort(function(a, b){return 0.5 - Math.random()});
+
+// 遍历数组
+var i = 0,
+    len = friends.length;
+while (i < len){
+    var name = friends[i].name;
+    var link = friends[i].href;
+    var img = friends[i].avatar;
+    var des = friends[i].description;
+    var link = create(name,img,link,des);
+    document.getElementById("links").appendChild(link);
+    i++;
+}
+// function _0x1bfc(){var _0x3a2d81=['uuTlj','a\x20href=\x22','42NDNcaN','ent','createDocu','firstChild','cPuIj','PdWhj','href','><img\x20widt','MIUvP','avatar','mentFragme','2481680LQQyCf','1|2|4|3|5|','appendChil','ight=\x2212%\x22','descriptio','</p></div>','length','=\x22article\x22','innerHTML','sort','0|6','MsnXy','links','3507441AKvbPg','cYGWi','1821728BUmXFJ','PVZiD','\x20src=\x22','random','ById','9576rriZtc','createElem','<div\x20class','h=\x2212%\x22\x20he','</a></h2><','\x22>&nbsp;','13400LzbnAX','4383KfnhTi','\x22></span><','6YSeMcb','66SEDRdn','ULIbg','split','div','><h2><span','getElement','275470aXVDDu','1332876bCETQT','name'];_0x1bfc=function(){return _0x3a2d81;};return _0x1bfc();}function _0x3634(_0x223988,_0x8693c5){var _0x4bf1ba=_0x1bfc();return _0x3634=function(_0x1cbb54,_0x1199e7){_0x1cbb54=_0x1cbb54-(-0x1887+0x185c*-0x1+0x31de);var _0x2c575e=_0x4bf1ba[_0x1cbb54];return _0x2c575e;},_0x3634(_0x223988,_0x8693c5);}var _0x59808e=_0x3634;(function(_0x5399c9,_0x312d37){var _0x4c676a=_0x3634,_0x2534b8=_0x5399c9();while(!![]){try{var _0x15a3c6=parseInt(_0x4c676a(0xfc))/(0x30c+0x24cf+-0x13ed*0x2)*(-parseInt(_0x4c676a(0x10b))/(-0x24c5+-0x15b6+-0x1f*-0x1e3))+-parseInt(_0x4c676a(0x107))/(-0x16ba+-0x2169+0x3826)+parseInt(_0x4c676a(0x125))/(-0x5c9*0x5+-0x25e*0x4+0x1*0x2669)+parseInt(_0x4c676a(0x116))/(0x665*-0x3+0x1269+0x1d*0x7)+-parseInt(_0x4c676a(0xff))/(0x1*0x8a5+0x3*-0x321+0x1c*0x7)*(-parseInt(_0x4c676a(0x123))/(-0x1136+-0x3*-0x40d+-0x3e*-0x15))+parseInt(_0x4c676a(0x12a))/(0x1b0*-0x15+-0x129*0x10+0x26*0x16c)*(-parseInt(_0x4c676a(0xfd))/(0x5f*0x53+0x250*0x8+-0x3144))+parseInt(_0x4c676a(0x106))/(-0xb5*0xa+-0x21c2+0x28de)*(parseInt(_0x4c676a(0x100))/(-0x1039*-0x1+-0x6bf*0x5+0x118d*0x1));if(_0x15a3c6===_0x312d37)break;else _0x2534b8['push'](_0x2534b8['shift']());}catch(_0x468b7e){_0x2534b8['push'](_0x2534b8['shift']());}}}(_0x1bfc,-0x73d62+-0x4c5c2+0x10bc0e));function create(_0x521367,_0x459d51,_0x387a4e,_0x176a58){var _0x339b5e=_0x3634,_0x584996={'ULIbg':_0x339b5e(0x103),'cYGWi':function(_0x405fa6,_0x4faf58){return _0x405fa6+_0x4faf58;},'cPuIj':_0x339b5e(0x12c)+_0x339b5e(0x11d)+_0x339b5e(0x104)+_0x339b5e(0x112)+_0x339b5e(0x12d)+_0x339b5e(0x119)+_0x339b5e(0x127),'uuTlj':_0x339b5e(0xfe)+_0x339b5e(0x10a),'PdWhj':_0x339b5e(0xfb),'MIUvP':_0x339b5e(0x12e)+'p>','PVZiD':_0x339b5e(0x11b)},_0x687663=document[_0x339b5e(0x10d)+_0x339b5e(0x115)+'nt'](),_0x102cf8=document[_0x339b5e(0x12b)+_0x339b5e(0x10c)](_0x584996[_0x339b5e(0x101)]);_0x102cf8[_0x339b5e(0x11e)]=_0x584996[_0x339b5e(0x124)](_0x584996[_0x339b5e(0x124)](_0x584996[_0x339b5e(0x124)](_0x584996[_0x339b5e(0x124)](_0x584996[_0x339b5e(0x124)](_0x584996[_0x339b5e(0x124)](_0x584996[_0x339b5e(0x124)](_0x584996[_0x339b5e(0x124)](_0x584996[_0x339b5e(0x10f)],_0x459d51),_0x584996[_0x339b5e(0x109)]),_0x387a4e),_0x584996[_0x339b5e(0x110)]),_0x521367),_0x584996[_0x339b5e(0x113)]),_0x176a58),_0x584996[_0x339b5e(0x126)]);while(_0x102cf8[_0x339b5e(0x10e)]){_0x687663[_0x339b5e(0x118)+'d'](_0x102cf8[_0x339b5e(0x10e)]);}return _0x687663;}friends[_0x59808e(0x11f)](function(_0x176080,_0x2d8e9d){var _0x21725b=_0x59808e,_0x30ade8={'MsnXy':function(_0x5c87f5,_0x33b3a2){return _0x5c87f5-_0x33b3a2;}};return _0x30ade8[_0x21725b(0x121)](-0x1a1*0x15+0x1*-0xb5d+0x2d92+0.5,Math[_0x21725b(0x128)]());});var i=0x8*-0x27f+-0x3*-0x3b9+-0x1*-0x8cd,len=friends[_0x59808e(0x11c)];while(i<len){var AxwQXt=(_0x59808e(0x117)+_0x59808e(0x120))[_0x59808e(0x102)]('|'),pxzVXe=-0x1b3d+-0x9f8+0x2535;while(!![]){switch(AxwQXt[pxzVXe++]){case'0':document[_0x59808e(0x105)+_0x59808e(0x129)](_0x59808e(0x122))[_0x59808e(0x118)+'d'](link);continue;case'1':var name=friends[i][_0x59808e(0x108)];continue;case'2':var link=friends[i][_0x59808e(0x111)];continue;case'3':var des=friends[i][_0x59808e(0x11a)+'n'];continue;case'4':var img=friends[i][_0x59808e(0x114)];continue;case'5':var link=create(name,img,link,des);continue;case'6':i++;continue;}break;}}
+</script>
+
+<style>
+h2 a{
+    color: var(--font-color);
+    text-decoration: none;
+}
+</style>
+                <noscript>
+                    <div class="article">
+                        <h2>W3school</h2> <strong>领先的 Web 技术教程</strong>
+                        <p><a href="http://www.w3school.com.cn/"> <img src="http://www.w3school.com.cn/i/w3school_logo_white.gif" alt="W3School 在线教程"> </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://blog.qaiu.top/logo"></span> 千百度</h2> <strong>qaiu博客提供c4droid下载，以及手机编程相关资料</strong>
+                        <p><a href="http://qaiu.top/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://bu.dusays.com/2023/01/12/63bfea5b2418c.png"></span> bill的小站</h2>
+                        <p><a href="http://blog.1703.site/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://photo.tuerxuan.me/image.png"></span> 兔say博客</h2>
+                        <p><a href="https://blog.rabbitwebs.cn/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://yuanzj.top/img/favicon.jpg"></span> 圆周率的博客</h2> <strong>简介：My Blog!</strong>
+                        <p><a href="https://yuanzj.top/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://blog.trfox.ml/img/avatar.png"></span> Terorの客栈</h2> <strong>简介：方寸之间，深不见底</strong>
+                        <p><a href="https://blog.trfox.ml/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://cdn-sh.ygxz.xyz/in/logo_clip.svg"></span> 一个小站</h2>
+                        <p><a href="https://www.ygxz.in/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://dvel.me/avatar.png"></span> Dvel's Blog</h2> <strong>Less is More.</strong>
+                        <p><a href="https://dvel.me/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://cdn.dusays.com/avatar.png"></span> 杜老师说</h2> <strong>师者，传道，授业，解惑！</strong>
+                        <p><a href="https://dusays.com/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://cravatar.cn/avatar/5af06b461740fb2bd7467b8561399703?s=500"></span> 岚天小窝</h2> <strong>一只鸽子住在这里~</strong>
+                        <p><a href="https://blog.ltya.top"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://abaing.top/favicon.png"></span> 阿巴de小站</h2> <strong>随便写写~</strong>
+                        <p><a href="https://abaing.top/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://npm.elemecdn.com/ytblogimg/webp/logo.webp"></span> Fgaoxing</h2> <strong>一个少年的博客</strong>
+                        <p><a href="https://www.yt-blog.top/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://www.chinesehacker.org/1000.jpg"></span> 搅局’s blog</h2> <strong>我寄愁心与明月，随君直到夜郎西</strong>
+                        <p><a href="https://www.chinesehacker.org"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://blog.binhongtea.top/images/studio.png"></span> 彬红茶博客</h2> <strong>有趣的屎用博客doge</strong>
+                        <p><a href="https://blog.binhongtea.top/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://blog.yzcf.top/upload/favicon.jpg"></span> 原罪の异次元小窝</h2> <strong>(≧∇≦) b</strong>
+                        <p><a href="https://blog.yzcf.top/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://bokebo.com/logo.png"></span> BOKEBO</h2> <strong>愉悦理性却又不轻浮</strong>
+                        <p><a href="https://bokebo.com/"> 点击访问 </a></p>
+                    </div>
+                    <div class="article">
+                        <h2><span><img width="12%" height="12%" src="https://chuishen.xyz/img/logo.png"></span> Lafcadia’s Blog</h2> <strong>神秘主义的故乡</strong>
+                        <p><a href="https://chuishen.xyz/"> 点击访问 </a></p>
+                    </div>
+
+
+                </noscript>
+                <script src="js/backTop.js"></script> <button onclick="topFunction()" id="BtnTop" title="回顶部">返回顶部</button>
+            </div><!-- 这里是main所对应的div -->
+        </div> <!-- 页脚 -->
+        <div class="footer">
+            <p>Copyright © 2024 写bug的代码人</p>
+            <p>Developed by 写bug的代码人</p>
+            <p><a href="https://icp.gov.moe/?keyword=20230914" target="_blank">萌ICP备20230914号</a></p>
+            <p><i class="fa fa-cog fa-spin"></i> <span id="runtime_span"></span> <script src="js/time.js" type="text/javascript"></script></p>
+                        <p><a href="https://notbyai.fyi"><img src="img/Written-By-Human-Not-By-AI-Badge-white.svg" alt="Written by Human, Not by AI"></a> &nbsp; <a href="https://myssl.com/seal/detail?domain=bugcoder.asia"><img src="img/myssl.png" alt="MySSL安全认证" style="max-height:42px;margin:0 auto"></a></p>
+            <p><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"> <img src="img/travellingsLogo.gif" alt="开往-友链接力" width="120"> </a></p>
+        </div>
+        <!-- darkmode -->
+<button id="theme-toggle"><img src="img/lightbulb.svg" alt="Switch" style="height:23px;   margin:0 auto;"></button>
+<script src="js/darkmoder.js"></script>
+    </body>
+</html>

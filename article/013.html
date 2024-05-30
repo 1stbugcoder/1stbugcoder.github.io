@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-cn">
+    <head>
+        <title>杂记·评论系统更换 - 写bug的代码人</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="description" content="杂记·评论系统更换 - 写bug的代码人">
+        <link rel="icon" type="image/png" href="../img/icon.ico">
+        <link id="theme" rel="stylesheet" type="text/css" href="../css/article.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="header">
+            <a href="../index.html"> <img src="../img/logo.jpg" width="120" height="60" alt="LOGO"> </a>
+            <p></p>
+            <h1>写bug的代码人的博客</h1>
+        </div> <!-- 导航栏 -->
+        <ul class="navbar">
+            <li><a href="../index.html"><i class="fa fa-home" style="color:#FFFFFF"></i>主页</a></li>
+            <li><a href="../friends.html"><i class="fa fa-link" style="color:#FFFFFF"></i>友链</a></li>
+            <li><a href="../talk.html">留言板</a></li>
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"><i class="fa fa-subway" style="color:#FFFFFF"></i>开往</a></li>
+            <li><a href="../atom.xml"><i class="fa fa-rss" style="color:#FFFFFF"></i>RSS</a></li>
+        </ul>
+        <div class="row">
+            <div class="main">
+                <h2>杂记·评论系统更换</h2>
+                <p>最近假期比较多，按照惯例检查网站时发现林林的建议，于是在左思右想之后，决定换一个评论系统。</p>
+                <p>先说说我之前评论系统的变化吧。 刚开始的时候是没有评论系统的，之后我发现绝大多数网站都有评论系统，所以我就用的Gitalk，但是这玩意需要GitHub登录（别说访客了，连我都不经常用），之后又用的Commento，好处是：不用登录而且速度也还可以；坏处是：没办法收到邮件提醒（就连Gitalk评论后GitHub都会发个邮件提醒），这也是林林提的建议，所以我打算换个评论系统。</p>
+                <p>共考虑了：Valine，Waline，Artalk，Twikoo</p>
+                <p>首先排除Artalk,因为似乎不太好部署（这里并不是说不好）。Valine 需要用国际版的 Leacloud，测试发现用不了，舍去。 只剩Waline和Twikoo了，前者在VPN(fān qiáng)作用下速度不错，可在中国大陆...... vercel.app实在是足以导致ERR_TIME_OUT的慢</p>
+                <p>我于是又琢磨用子域名和cloudflare进行CDN加速，可又一直出现ERR_TOO_MANY_REDIRECTS，只得放弃</p>
+                <p>之后又改用Twikoo</p>
+                <p>Twikoo的功能与UI倒不错，不用什么多余配置（比较适合小白），至于部署方面...我用的是一个月有500h免费额度的Railway,可是500小时只够20天，怎么持续白嫖呢？</p>
+                <p>(PS. Railway 的时长是只要开始服务就算，而不是按照实际使用时长来计算）</p>
+                <p>在长期思想斗争后，我决定还是算了，毕竟帐号多了也不好管理，况且我的网站是纯静态的（甚至连配置文件都没有），所以不出意外的情况下，每个月的前20天Twikoo都能够正常使用，至于剩下10天…大家可以在留言板评论（这网站其实也没几个人访问）。</p>
+                <p>然后，我发现了一个好东西——Zeabur，因为这是一个刚刚起步的平台，所以一切功能全部免费。老规矩，开整</p>
+                <p>之后在部署的过程中，我还发现它有一个优点，就是不用去配置服务器环境变量之类的东西，只需要连接你的GitHub后果并将Twikoo的仓库授权就可以了。就这样，我的评论系统又可以继续运行了</p>
+                <p>&nbsp;</p>
+                <p>Updated 2023-03-26 10:06 写bug的代码人</p>
+                <p>Posted 2023-02-25 21:59 写bug的代码人</p>
+                <p>本文标签：<button><a href="../tags.html#run">网站运维</a></button></p> <!--返回顶部按钮--> <button onclick="topFunction()" id="BtnTop" title="回顶部">返回顶部</button>
+                <p><span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv">?</span>次</span></p>
+                <div class="notice">
+                    <p><strong>文章作者</strong> &nbsp; 写bug的代码人</p>
+                    <p><strong>文章链接</strong> &nbsp; <a href="https://bugcoder.asia/article/013.html">https://bugcoder.asia/article/013.html</a></p>
+                    <p><strong>声明</strong> &nbsp; 本博客中的所有文章均使用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">《署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)》</a>协议授权，转载需注明来源，所有代码均使用<a href="https://opensource.org/license/mit/">MIT开源协议</a></p>
+                </div>
+                <p>&nbsp;</p> <!--
+<div id="tcomment"></div>
+<script src="https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js"></script>
+<script>
+twikoo.init({
+  envId: 'https://bugcoder.zeabur.app/', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+  el: '#tcomment', // 容器元素
+  // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+  path: '013.html', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+  // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+})
+</script>-->
+                <div id="waline"></div>
+                <script type="module">
+    import { init } from 'https://static.bugcoder.asia/js/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'waline.bugcoder.asia',
+      path: window.location.pathname,
+      search: false,
+      reaction: [
+      'https://emoji.bugcoder.asia/bmoji/bmoji_hmm.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_wow.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_onlooker.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_doge.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_what.png',
+      ],
+      emoji: [
+      'https://emoji.bugcoder.asia/bmoji',
+      'https://emoji.bugcoder.asia/oneshot',
+      ],
+    });
+  </script>
+            </div><!-- 这里是main所对应的div -->
+        </div><!-- 页脚 -->
+        <div class="footer">
+            <p>Copyright © 2024 写bug的代码人</p>
+            <p>Developed by 写bug的代码人</p>
+            <p><a href="https://icp.gov.moe/?keyword=20230914" target="_blank">萌ICP备20230914号</a></p>
+            <p><i class="fa fa-cog fa-spin"></i> <span id="runtime_span"></span></p>
+            <p></p>
+            <p><a href="https://notbyai.fyi"><img src="../img/Written-By-Human-Not-By-AI-Badge-white.svg" alt="Written by Human, Not by AI"></a> &nbsp; <a href="https://myssl.com/seal/detail?domain=bugcoder.asia"><img src="../img/myssl.png" alt="MySSL安全认证" style="max-height:42px;margin:0 auto"></a></p>
+            <p><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"> <img src="../img/travellingsLogo.gif" alt="开往-友链接力" width="120"> </a></p>
+            <p></p>
+        </div> <!--不太重要的引用文件-->
+        <script async src="https://analytics.umami.is/script.js" data-website-id="8fa97467-7636-45be-86c4-27951c22930a"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+        <script src="../js/backTop.js"></script>
+        <script src="../js/time.js" type="text/javascript"></script>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <link rel="stylesheet" href="../css/waline.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.3/viewer.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.3/viewer.min.js"></script>
+        <script type="text/javascript">
+    // 图片预览
+    var viewer = new Viewer(document.getElementById('viewer'));
+</script>
+<!-- darkmode -->
+<button id="theme-toggle"><img src="../img/lightbulb.svg" alt="Switch" style="height:23px;   margin:0 auto;"></button>
+<script src="../js/darkmode.js"></script>
+    </body>
+</html>

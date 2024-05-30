@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-cn">
+    <head>
+        <title>论 if __name__ == '__main__': - 写bug的代码人</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="description" content="论 if __name__ == '__main__': - 写bug的代码人">
+        <link rel="icon" type="image/png" href="../img/icon.ico">
+        <link id="theme" rel="stylesheet" type="text/css" href="../css/article.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="header">
+            <a href="../index.html"> <img src="../img/logo.jpg" width="120" height="60" alt="LOGO"> </a>
+            <p></p>
+            <h1>写bug的代码人的博客</h1>
+        </div> <!-- 导航栏 -->
+        <ul class="navbar">
+            <li><a href="../index.html"><i class="fa fa-home" style="color:#FFFFFF"></i>主页</a></li>
+            <li><a href="../friends.html"><i class="fa fa-link" style="color:#FFFFFF"></i>友链</a></li>
+            <li><a href="../talk.html">留言板</a></li>
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"><i class="fa fa-subway" style="color:#FFFFFF"></i>开往</a></li>
+            <li><a href="../atom.xml"><i class="fa fa-rss" style="color:#FFFFFF"></i>RSS</a></li>
+        </ul>
+        <div class="row">
+            <div class="main">
+                <h2>论 if __name__ == '__main__':</h2>
+                <p>之前学习Python时，总是见到if __name__ == '__main__':，但我一直不知道是什么意思。之后做了一些demo，没有if __name__ == '__main__':也能运行，就没有深究。今天闲来无事（既然无事就要让他有事），就研究了一下。</p>
+                <p><strong>注：</strong>因为我是学生党，所以用手机里的QPython OH代替Python运行环境。</p>
+                <p>1. 新建aaa.py，输入如下代码</p>
+                <div class="code">
+                    <pre><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> myfunc():
+    </span><span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">b</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+
+</span><span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">a</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+myfunc()</span></pre>
+                </div>
+                <p>2. 之后我们新建bbb.py</p>
+                <div class="code">
+                    <pre><span style="color: rgba(0, 0, 255, 1)">from</span> aaa <span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> myfunc
+
+myfunc()
+</span><span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">c</span><span style="color: rgba(128, 0, 0, 1)">"</span>)</pre>
+                </div>
+                <p>你以为</p>
+                <div class="code">
+                    <pre><span style="color: rgba(0, 0, 0, 1)">b
+c
+
+</span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">[QPython] Press enter to exit ...</span></pre>
+                </div>
+                <p>实际上运行后</p>
+                <div class="code">
+                    <pre><span style="color: rgba(0, 0, 0, 1)">a
+b
+c
+
+</span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">[QPython] Press enter to exit ...</span></pre>
+                </div>
+                <p>是不是很疑惑？明明我只调用了myfunc()，为什么连a也给我打印出来了？这才是if __name__ == '__main__'的真正意义。</p>
+                <p>之后我们把aaa.py的内容改成</p>
+                <div class="code">
+                    <pre><span style="color: rgba(0, 0, 255, 1)">def</span><span style="color: rgba(0, 0, 0, 1)"> myfunc():
+    </span><span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">b</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+
+</span><span style="color: rgba(0, 0, 255, 1)">if</span> <span style="color: rgba(128, 0, 128, 1)">__name__</span> == <span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(128, 0, 0, 1)">__main__</span><span style="color: rgba(128, 0, 0, 1)">'</span><span style="color: rgba(0, 0, 0, 1)">:
+    </span><span style="color: rgba(0, 0, 255, 1)">print</span>(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">a</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">)
+    myfunc()</span></pre>
+                </div>
+                <p>运行之后的结果还是</p>
+                <div class="code">
+                    <pre><span style="color: rgba(0, 0, 0, 1)">a
+b
+
+</span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">[QPython] Press enter to exit ...</span></pre>
+                </div>
+                <p>再运行bbb.py</p>
+                <div class="code">
+                    <pre><span style="color: rgba(0, 0, 0, 1)">b
+c
+
+</span><span style="color: rgba(0, 128, 0, 1)">#</span><span style="color: rgba(0, 128, 0, 1)">[QPython] Press enter to exit ...</span></pre>
+                </div>
+                <p>看，变成我们想要的了吧？根据结果我们可以看到，if __name__ == '__main__'下面的语句没有被运行。</p>
+                <p></p>
+                <h3>总结：</h3><strong>__name__ 相当于模块的名字，'__main__'相当于本程序的名字。</strong>如果整个项目只有一个文件，那么if __name__ == '__main__'用不用都行。如果整个项目有两个及以上文件，那么就要把被引用文件中不希望在其他文件被使用的函数放在if __name__ == '__main__'下面。 
+                <p></p>
+                <p>&nbsp;</p>
+                <p>Posted 2022-08-09 09:57 写bug的代码人</p>
+                <p>本文标签：<button><a href="../tags.html#Python">Python</a></button></p> <!--返回顶部按钮--> <button onclick="topFunction()" id="BtnTop" title="回顶部">返回顶部</button>
+                <p><span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv">?</span>次</span></p>
+                <div class="notice">
+                    <p><strong>文章作者</strong> &nbsp; 写bug的代码人</p>
+                    <p><strong>文章链接</strong> &nbsp; <a href="https://bugcoder.asia/article/001.html">https://bugcoder.asia/article/001.html</a></p>
+                    <p><strong>声明</strong> &nbsp; 本博客中的所有文章均使用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">《署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)》</a>协议授权，所有代码均使用<a href="https://opensource.org/license/mit/">MIT开源协议</a></p>
+                </div>
+                <p>&nbsp;</p><!--
+<div id="tcomment"></div>
+<script src="https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js"></script>
+<script>
+twikoo.init({
+  envId: 'https://bugcoder.zeabur.app/', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+  el: '#tcomment', // 容器元素
+  // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+  path: '001.html', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+  // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+})
+</script>-->
+                <div id="waline"></div>
+                <script type="module">
+    import { init } from 'https://static.bugcoder.asia/js/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'waline.bugcoder.asia',
+      path: window.location.pathname,
+      search: false,
+      reaction: [
+      'https://emoji.bugcoder.asia/bmoji/bmoji_hmm.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_wow.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_onlooker.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_doge.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_what.png',
+      ],
+      emoji: [
+      'https://emoji.bugcoder.asia/bmoji',
+      'https://emoji.bugcoder.asia/oneshot',
+      ],
+    });
+  </script>
+            </div><!-- 这里是main所对应的div -->
+        </div> <!-- 页脚 -->
+        <div class="footer">
+            <p>Copyright © 2024 写bug的代码人</p>
+            <p>Developed by 写bug的代码人</p>
+            <p><a href="https://icp.gov.moe/?keyword=20230914" target="_blank">萌ICP备20230914号</a></p>
+            <p><i class="fa fa-cog fa-spin"></i> <span id="runtime_span"></span></p>
+            <p></p>
+            <p><a href="https://notbyai.fyi"><img src="../img/Written-By-Human-Not-By-AI-Badge-white.svg" alt="Written by Human, Not by AI"></a> &nbsp; <a href="https://myssl.com/seal/detail?domain=bugcoder.asia"><img src="../img/myssl.png" alt="MySSL安全认证" style="max-height:42px;margin:0 auto"></a></p>
+            <p><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"> <img src="../img/travellingsLogo.gif" alt="开往-友链接力" width="120"> </a></p>
+            <p></p>
+        </div> <!--不太重要的引用文件-->
+        <script async src="https://analytics.umami.is/script.js" data-website-id="8fa97467-7636-45be-86c4-27951c22930a"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+        <script src="../js/backTop.js"></script>
+        <link rel="stylesheet" href="../css/waline.css">
+        <script src="../js/time.js" type="text/javascript"></script>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- darkmode -->
+<button id="theme-toggle"><img src="../img/lightbulb.svg" alt="Switch" style="height:23px;   margin:0 auto;"></button>
+<script src="../js/darkmode.js"></script>
+    </body>
+</html>

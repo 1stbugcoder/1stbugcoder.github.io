@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<title>自动点名器——我的第一个python程序 - 写bug的代码人</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="description" content="自动点名器——我的第一个python程序 - 写bug的代码人">
+<link rel="icon" type="image/png" href="../images/icon.ico">
+<link rel="stylesheet" type="text/css" href="../css/article.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<!--不太重要的引用文件-->
+<script async src="https://analytics.umami.is/script.js" data-website-id="8fa97467-7636-45be-86c4-27951c22930a"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"/>
+<script src="../js/backTop.js"></script>
+
+<!-- Header -->
+<div class="header">
+  <a href="../index.html"> <img src ="../images/logo.jpg" width="120" height="60" alt="LOGO"> </a>
+  <p></p>
+  <h1>写bug的代码人的博客</h1>
+</div>
+
+<!-- 导航栏 -->
+<ul class="navbar"><li><a href="../index.html"><i class="fa fa-home" style="color:#FFFFFF"></i>主页</a></li>
+            <li><a href="../friends.html"><i class="fa fa-link" style="color:#FFFFFF"></i>友链</a></li>
+            <li><a href="../talk.html">留言板</a></li>
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="https://travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"><i class="fa fa-subway" style="color:#FFFFFF"></i></a></li></ul>
+  <div class="main">
+    <h2>自动点名器——我的第一个python程序</h2>
+     <p>我上初三的时候，给物理老师弄了一个自动点名器（这玩意儿前前后后用了我半年的时间-_-||，<span class="zhx">借口是</span>主要是没有大段的时间去开发与debug），并且在单次程序运行期间不会重复点名，这个程序所用到有关Python的知识点很少，但是它却是我真正意义上的第一个Python程序。</p>
+     <p>以下为源码（为保证隐私，姓名已做匿名处理）</p>
+     <div class="code">
+<pre><span style="color: #0000ff;">import</span><span style="color: #000000;"> tkinter as tk
+</span><span style="color: #0000ff;">import</span><span style="color: #000000;"> random
+</span><span style="color: #008000;">#</span><span style="color: #008000;">创建窗口</span>
+window =<span style="color: #000000;"> tk.Tk()
+window.title(</span><span style="color: #800000;">"</span><span style="color: #800000;">自动点名器-By一名热心同学</span><span style="color: #800000;">"</span>)<span style="color: #008000;">#</span><span style="color: #008000;">标题</span>
+window.geometry(<span style="color: #800000;">"</span><span style="color: #800000;">1000x600</span><span style="color: #800000;">"</span>)<span style="color: #008000;">#</span><span style="color: #008000;">窗口大小</span>
+window.lift()<span style="color: #008000;">#</span><span style="color: #008000;">窗口弹出时置顶</span>
+window.resizable(False,False)<span style="color: #008000;">#</span><span style="color: #008000;">禁止用户调整大小</span>
+var=tk.StringVar()<span style="color: #008000;">#</span><span style="color: #008000;">定义一个字符串变量</span>
+
+<span style="color: #008000;">#</span><span style="color: #008000;">载入名字</span>
+namelist=[<span style="color: #800000;">"</span><span style="color: #800000;">张三</span><span style="color: #800000;">"</span><span style="color: #000000;">,
+</span><span style="color: #800000;">"</span><span style="color: #800000;">李四</span><span style="color: #800000;">"</span><span style="color: #000000;">,
+</span><span style="color: #800000;">"</span><span style="color: #800000;">王五</span><span style="color: #800000;">"</span><span style="color: #000000;">,
+</span><span style="color: #800000;">"</span><span style="color: #800000;">写bug的代码人</span><span style="color: #800000;">"</span><span style="color: #000000;">]
+</span><span style="color: #0000ff;">print</span><span style="color: #000000;">(namelist)
+namelen </span>=<span style="color: #000000;"> len(namelist)
+</span><span style="color: #0000ff;">print</span><span style="color: #000000;">(namelen)
+y </span>=<span style="color: #000000;"> random.randrange(0,namelen)
+</span><span style="color: #0000ff;">global</span><span style="color: #000000;"> aname
+aname</span>=<span style="color: #000000;">namelist[y]
+</span><span style="color: #0000ff;">print</span><span style="color: #000000;">(aname)
+on_hit</span>=<span style="color: #000000;">False
+
+</span><span style="color: #008000;">#</span><span style="color: #008000;">按钮的函数</span>
+<span style="color: #0000ff;">def</span><span style="color: #000000;"> start():
+    namelen </span>=<span style="color: #000000;"> len(namelist)
+    </span><span style="color: #0000ff;">print</span><span style="color: #000000;">(namelen)
+    y </span>=<span style="color: #000000;"> random.randrange(0,namelen)
+    </span><span style="color: #0000ff;">global</span><span style="color: #000000;"> aname
+    aname</span>=<span style="color: #000000;">namelist[y]
+    </span><span style="color: #0000ff;">print</span><span style="color: #000000;">(aname)
+    </span><span style="color: #0000ff;">del</span><span style="color: #000000;"> namelist[y]
+    </span><span style="color: #0000ff;">global</span> on_hit   <span style="color: #008000;">#</span><span style="color: #008000;">声明全局变量</span>
+    <span style="color: #0000ff;">if</span> on_hit==<span style="color: #000000;">False:
+        on_hit</span>=<span style="color: #000000;">True
+        var.set(aname)
+    </span><span style="color: #0000ff;">else</span><span style="color: #000000;">:
+        on_hit</span>=<span style="color: #000000;">False
+        var.set(aname)
+
+
+</span><span style="color: #0000ff;">def</span><span style="color: #000000;"> about():
+    windows </span>=<span style="color: #000000;"> tk.Tk()
+    windows.title(</span><span style="color: #800000;">"</span><span style="color: #800000;">自动点名器-关于</span><span style="color: #800000;">"</span>)  <span style="color: #008000;">#</span><span style="color: #008000;">标题</span>
+    windows.geometry(<span style="color: #800000;">"</span><span style="color: #800000;">400x300</span><span style="color: #800000;">"</span>)                 <span style="color: #008000;">#</span><span style="color: #008000;">窗口大小</span>
+    windows.lift()                              <span style="color: #008000;">#</span><span style="color: #008000;">窗口弹出时置顶</span>
+    windows.resizable(False,False)              <span style="color: #008000;">#</span><span style="color: #008000;">禁止用户调整大小</span>
+<span style="color: #000000;">
+    m </span>= <span style="color: #800000;">"""</span><span style="color: #800000;">
+本软件由写bug的代码人友情编写
+本程序开发者开发配置如下
+系统:windows7 SP1
+环境:Python3.8.10 64bit
+本程序已采取相关指施以防止恶意更改人名！
+每次按点名按钮就会随机出现一个名字，且
+重启软件前不会重复
+联系作者:找本班物理课代表
+欢迎大家访问我的网址:bugcoder.ml
+
+本程序尚有大量不足之处，欢迎指出！
+    </span><span style="color: #800000;">"""</span><span style="color: #000000;">
+
+    labout </span>=<span style="color: #000000;"> tk.Label(windows,
+             text </span>= m,    <span style="color: #008000;">#</span><span style="color: #008000;">文本内容</span>
+             bg = <span style="color: #800000;">"</span><span style="color: #800000;">white</span><span style="color: #800000;">"</span>,    <span style="color: #008000;">#</span><span style="color: #008000;">背景颜色</span>
+             font = (<span style="color: #800000;">"</span><span style="color: #800000;">楷体</span><span style="color: #800000;">"</span>, 15),    <span style="color: #008000;">#</span><span style="color: #008000;">字体字号</span>
+             width = 90, height = 40   <span style="color: #008000;">#</span><span style="color: #008000;">标签长度</span>
+<span style="color: #000000;">             )
+    labout.pack()
+    windows.mainloop()
+</span><span style="color: #008000;">#</span><span style="color: #008000;">内容</span><span style="color: #008000;">
+#</span><span style="color: #008000;">自定义一个Label标题</span>
+l =<span style="color: #000000;"> tk.Label(window,
+             text </span>= <span style="color: #800000;">"</span><span style="color: #800000;">猜猜谁是幸运儿？</span><span style="color: #800000;">"</span>,    <span style="color: #008000;">#</span><span style="color: #008000;">文本内容</span>
+             bg = <span style="color: #800000;">"</span><span style="color: #800000;">white</span><span style="color: #800000;">"</span>,    <span style="color: #008000;">#</span><span style="color: #008000;">背景颜色</span>
+             font = (<span style="color: #800000;">"</span><span style="color: #800000;">楷体</span><span style="color: #800000;">"</span>, 35),    <span style="color: #008000;">#</span><span style="color: #008000;">字体字号</span>
+             width = 50, height = 2   <span style="color: #008000;">#</span><span style="color: #008000;">标签长度</span>
+<span style="color: #000000;">             )
+l.pack()
+   
+</span><span style="color: #008000;">#</span><span style="color: #008000;">名字显示框</span>
+l2 =<span style="color: #000000;"> tk.Label(window,
+             textvariable </span>= var,    <span style="color: #008000;">#</span><span style="color: #008000;">文本内容</span>
+             bg = <span style="color: #800000;">"</span><span style="color: #800000;">white</span><span style="color: #800000;">"</span>,    <span style="color: #008000;">#</span><span style="color: #008000;">背景颜色</span>
+             font = (<span style="color: #800000;">"</span><span style="color: #800000;">楷体</span><span style="color: #800000;">"</span>, 190),    <span style="color: #008000;">#</span><span style="color: #008000;">字体字号</span>
+             width = 8, height = 2   <span style="color: #008000;">#</span><span style="color: #008000;">标签长度</span>
+<span style="color: #000000;">             )
+l2.place(x </span>= 0, y = 100<span style="color: #000000;">)
+
+</span><span style="color: #008000;">#</span><span style="color: #008000;">按钮</span>
+b1 =<span style="color: #000000;"> tk.Button(window,
+               text </span>= <span style="color: #800000;">"</span><span style="color: #800000;">关于</span><span style="color: #800000;">"</span><span style="color: #000000;">,
+               font </span>= (<span style="color: #800000;">"</span><span style="color: #800000;">楷体</span><span style="color: #800000;">"</span>, 20),    <span style="color: #008000;">#</span><span style="color: #008000;">字体字号</span>
+               width = 18, height = 4<span style="color: #000000;">,
+               command </span>=<span style="color: #000000;"> about)
+b1.place(x </span>= 100, y = 90<span style="color: #000000;">)
+
+b2 </span>=<span style="color: #000000;"> tk.Button(window,
+               text </span>= <span style="color: #800000;">"</span><span style="color: #800000;">开始</span><span style="color: #800000;">"</span><span style="color: #000000;">,
+               font </span>= (<span style="color: #800000;">"</span><span style="color: #800000;">楷体</span><span style="color: #800000;">"</span>, 20<span style="color: #000000;">),    
+               width </span>= 18, height = 4<span style="color: #000000;">,
+               command </span>=<span style="color: #000000;"> start)
+b2.place(x </span>= 650, y = 90<span style="color: #000000;">)
+
+window.mainloop()</span></pre>
+</div>
+<p>中途还闹过几次笑话</p>
+<p>首先，就是我在上网课的电脑上面用pyinstaller打包之后找不到打包后的exe</p>
+<p>好不容易设置了半天，找到了程序，拿到学校才发现学校电脑是32位的，无法运行64位Python所打包出来的程序</p>
+<p>最后还是我把Python32位的安装包拷贝到了学校，在学校电脑上打包的ʕ  •ᴥ•ʔ……</p>
+<p>&nbsp;</p>
+<p>Posted 2023-01-16 16:11 写bug的代码人</p> 
+<p>本文标签：<button><a href="../tags.html#Python">Python</a></button></p>
+<!--返回顶部按钮-->
+<button onclick="topFunction()" id="BtnTop" title="回顶部">返回顶部</button>
+  <p>
+<span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv">?</span>次</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</p>
+     
+<p>&nbsp;</p>
+<!--
+<div id="tcomment"></div>
+<script src="https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js"></script>
+<script>
+twikoo.init({
+  envId: 'https://bugcoder.zeabur.app/', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+  el: '#tcomment', // 容器元素
+  // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+  path: '007.html', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+  // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+})
+</script>-->
+<link rel="stylesheet" href="../css/waline.css"/>
+  <div id="waline"></div>
+  <script type="module">
+    import { init } from 'https://static.bugcoder.gq/js/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'waline.bugcoder.gq',
+      path: window.location.pathname,
+      search: false,
+      reaction: [
+      'https://emoji.bugcoder.gq/bmoji/bmoji_hmm.png',
+      'https://emoji.bugcoder.gq/bmoji/bmoji_wow.png',
+      'https://emoji.bugcoder.gq/bmoji/bmoji_onlooker.png',
+      'https://emoji.bugcoder.gq/bmoji/bmoji_doge.png',
+      'https://emoji.bugcoder.gq/bmoji/bmoji_what.png',
+      ],
+      emoji: [
+      'https://emoji.bugcoder.gq/bmoji',
+      'https://emoji.bugcoder.gq/tieba',
+      ],
+    });
+  </script>
+         
+     
+  </div><!-- 这里是main所对应的div -->
+
+<!-- 页脚 -->
+<div class="footer">
+    <p>
+    Copyright © 2023 写bug的代码人
+    </p>
+    <p>Developed by 写bug的代码人</p>
+    <p>
+    <a href="https://icp.gov.moe/?keyword=20230914" target="_blank">萌ICP备20230914号</a>
+    </p>
+    <p>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <i class="fa fa-cog fa-spin"></i>
+    <span id="runtime_span"></span>
+    <script src="../js/time.js" type="text/javascript"></script>
+    </p>
+    <p>
+    <a href="https://travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力">
+    <img src="../images/travellingsLogo.gif" alt="开往-友链接力" width="120">
+    </a>
+    <a href="https://myssl.com/seal/detail?domain=bugcoder.gq"><img src="../images/myssl.png" alt="MySSL安全认证" style="max-height:35px;margin:0 auto"></a>
+    </p>
+</div>
+
+</body>
+</html>

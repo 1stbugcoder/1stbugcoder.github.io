@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-cn">
+    <head>
+        <title>盘点那些奇怪的错误（二） - 写bug的代码人</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="description" content="盘点那些奇怪的错误（二） - 写bug的代码人">
+        <link rel="icon" type="image/png" href="../img/icon.ico">
+        <link id="theme" rel="stylesheet" type="text/css" href="../css/article.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="header">
+            <a href="../index.html"> <img src="../img/logo.jpg" width="120" height="60" alt="LOGO"> </a>
+            <p></p>
+            <h1>写bug的代码人的博客</h1>
+        </div> <!-- 导航栏 -->
+        <ul class="navbar">
+            <li><a href="../index.html"><i class="fa fa-home" style="color:#FFFFFF"></i>主页</a></li>
+            <li><a href="../friends.html"><i class="fa fa-link" style="color:#FFFFFF"></i>友链</a></li>
+            <li><a href="../talk.html">留言板</a></li>
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"><i class="fa fa-subway" style="color:#FFFFFF"></i>开往</a></li>
+            <li><a href="../atom.xml"><i class="fa fa-rss" style="color:#FFFFFF"></i>RSS</a></li>
+        </ul>
+        <div class="row">
+            <div class="main">
+                <h2>盘点那些奇怪的错误（二）</h2>
+                <p>鸽了很久才更新的一篇文章</p>
+                <h3>1.无语的数学老师</h3> <img src="../img/article020-1.jpg" width="100%" height="auto">
+                <p>从上面这张图可知，数学老师的心理《 逐 渐 暴 躁 》</p>
+                <p>易得，拿到这份作业的我 [瑟瑟发抖]</p>
+                <h3>2.灵动一动</h3>
+                <p>我们都知道，已知前n项和求通项公式要分$n = 1$和$n \geqslant 2$</p>
+                <p>我直接</p>
+                <p>$$a_n = S_{n+1}-S_n$$</p>
+                <p>这不就不用考虑$S_{n-1}$所带来的$n \geqslant 2$的问题了</p>
+                <h3>3.出乎意料的错误</h3>
+                <p><strong>原题</strong>：抛物线$y = \frac{5}{2} x^2$的准线方程为</p>
+                <p><strong>其他做错的同学</strong>：$y = \frac{5}{8} x$，全然不顾是不是标准方程</p>
+                <p><strong>我</strong>：先化成标准方程$x^2 =\frac{2}{5} y$，这样准线方程就是</p>
+                <p>$$y=-\frac{1}{5}x $$</p>
+                <p>全然不顾2p和准线之间是4倍的关系</p>
+                <p>&nbsp;</p>
+                <p>Posted 2024-02-07 19:40 写bug的代码人</p>
+                <p>本文标签：<button><a href="../tags.html#chat">闲聊</a></button> <!--返回顶部按钮--> <button onclick="topFunction()" id="BtnTop" title="回顶部">返回顶部</button></p>
+                <p><span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv">?</span>次</span></p>
+                <div class="notice">
+                    <p><strong>文章作者</strong> &nbsp; 写bug的代码人</p>
+                    <p><strong>文章链接</strong> &nbsp; <a href="https://bugcoder.asia/article/020.html">https://bugcoder.asia/article/020.html</a></p>
+                    <p><strong>声明</strong> &nbsp; 本博客中的所有文章均使用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">《署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)》</a>协议授权，转载需注明来源，所有代码均使用<a href="https://opensource.org/license/mit/">MIT开源协议</a></p>
+                </div>
+                <p>&nbsp;</p> <!--
+<div id="tcomment"></div>
+<script src="https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js"></script>
+<script>
+twikoo.init({
+  envId: 'https://bugcoder.zeabur.app/', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+  el: '#tcomment', // 容器元素
+  // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+  path: '017.html', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+  // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+})
+</script>--> <!--iframe内联框架，用于处理Katex与Waline冲突导致的报错--> <!--
+  <div id="waline"></div>
+  <script type="module">
+    import { init } from 'https://static.bugcoder.asia/js/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'waline.bugcoder.asia',
+      path: window.location.pathname,
+      search: false,
+      reaction: [
+      'https://emoji.bugcoder.asia/bmoji/bmoji_hmm.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_wow.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_onlooker.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_doge.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_what.png',
+      ],
+      emoji: [
+      'https://emoji.bugcoder.asia/bmoji',
+      'https://emoji.bugcoder.asia/oneshot',
+      ],
+    });
+  </script>
+--> <!--
+
+ <iframe id="mainiframe" width="100%" height="600px" src="../comment.html?pah=article/017"  frameborder="0" scrolling="auto"></iframe>
+ <script type="text/javascript">
+function changeFrameHeight(){
+        var ifm= document.getElementById("mainiframe").contentWindow;
+        ifm.height=document.documentElement.clientHeight;
+    }
+//    window.onresize=function(){ changeFrameHeight();}
+//    $(function(){changeFrameHeight();});
+
+ 
+window.setInterval(function() {
+changeFrameHeight();
+}, 1000);
+
+</script>--> <!--
+<iframe name="iframe1" onload="this.height=this.contentWindow.documentdocument.body.clientHeight" src="../comment.html?pah=article/017" frameborder="0" width="100%"></iframe>
+<script type="text/javascript">
+
+var iframes = document.getElementsByTagName('iframe1');
+
+        for (var i = 0, j = iframes.length; i < j; ++i) {
+            // 放在闭包中，防止iframe触发load事件的时候下标不匹配
+            (function(_i) {
+                iframes[_i].onload = function() {
+                    // 提前还原高度
+                    this.setAttribute('height', 'auto'); // 或设为''
+                    // 再在下一轮事件循环中设置新高度
+                    setTimeout(function() {
+                        iframes[_i].setAttribute('height', iframes[_i].contentWindow.document.body.scrollHeight);
+                    }, 0);
+                }
+            })(i);
+        }</script>--> <iframe id="iframe" src="../comment.html?path=/article/020" height="900px" width="100%"> &lt;p&gt;您的浏览器不支持iframe，请&lt;a href="../comment.html?path=/article/020"&gt;点击这里&lt;/a&gt;来评论&lt;/p&gt; </iframe>
+            </div><!-- 这里是main所对应的div -->
+        </div> <!-- 页脚 -->
+        <div class="footer">
+            <p>Copyright © 2024 写bug的代码人</p>
+            <p>Developed by 写bug的代码人</p>
+            <p><a href="https://icp.gov.moe/?keyword=20230914" target="_blank">萌ICP备20230914号</a></p>
+            <p><i class="fa fa-cog fa-spin"></i> <span id="runtime_span"></span></p>
+            <p></p>
+            <p><a href="https://notbyai.fyi"><img src="../img/Written-By-Human-Not-By-AI-Badge-white.svg" alt="Written by Human, Not by AI"></a> &nbsp; <a href="https://myssl.com/seal/detail?domain=bugcoder.asia"><img src="../img/myssl.png" alt="MySSL安全认证" style="max-height:42px;margin:0 auto"></a></p>
+            <p><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"> <img src="../img/travellingsLogo.gif" alt="开往-友链接力" width="120"> </a></p>
+            <p></p>
+        </div> <!--不太重要的引用文件-->
+        <script async src="https://analytics.umami.is/script.js" data-website-id="8fa97467-7636-45be-86c4-27951c22930a"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+        <script src="../js/backTop.js"></script>
+        <script src="../js/time.js" type="text/javascript"></script>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <link rel="stylesheet" href="../css/waline.css"> <!--katex数学公式-->
+        <link rel="stylesheet" href="https://static.bugcoder.asia/katex/katex.min.css">
+        <script defer src="https://static.bugcoder.asia/katex/katex.min.js"></script>
+        <script defer src="https://static.bugcoder.asia/katex/contrib/auto-render.min.js"></script> <!--初始化Katex-->
+        <script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    macros: {
+      "\\ge": "\\geqslant",
+      "\\le": "\\leqslant",
+      "\\geq": "\\geqslant",
+      "\\leq": "\\leqslant"
+	}
+  });
+});
+</script>
+<!-- darkmode -->
+<button id="theme-toggle"><img src="../img/lightbulb.svg" alt="Switch" style="height:23px;   margin:0 auto;"></button>
+<script src="../js/darkmode.js"></script>
+<!--<script>
+// https://dev.to/albertomontalesi/add-dark-mode-to-your-website-with-just-a-few-lines-of-code-5baf
+//this one is jut to wait for the page to load
+document.addEventListener('DOMContentLoaded', () => {
+
+    const themeStylesheet = document.getElementById('theme');
+    const storedTheme = localStorage.getItem('theme');
+    if(1==1){
+        themeStylesheet.href = '../css/article.css';
+        themeStylesheet.href = storedTheme;
+    }
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+       
+            // if it's dark -> go light
+        if(themeStylesheet.href.includes('dark')){
+                    themeStylesheet.href = '../css/article.css';
+            themeToggle.innerText = 'Switch to dark mode';
+
+        } else {
+                   // if it's light -> go dark
+                        themeStylesheet.href = '../css/article.darkmode.css';
+            themeToggle.innerText = 'Switch to light mode';
+
+        }
+        // save the preference to localStorage
+        localStorage.setItem('theme',themeStylesheet.href)  
+    })
+})
+</script>-->
+    </body>
+</html>

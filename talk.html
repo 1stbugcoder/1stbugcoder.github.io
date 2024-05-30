@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-cn">
+    <head>
+        <title>留言板 - 写bug的代码人</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="description" content="留言板-写bug的代码人">
+        <link rel="icon" type="image/png" href="img/icon.ico">
+        <link id="theme" rel="stylesheet" type="text/css" href="css/article.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="header">
+            <a href="index.html"> <img src="img/logo.jpg" width="120" height="60" alt="LOGO"> </a>
+            <p></p>
+            <h1>写bug的代码人的博客</h1>
+        </div> <!-- 导航栏 -->
+        <ul class="navbar">
+            <li><a href="index.html"><i class="fa fa-home" style="color:#FFFFFF"></i>主页</a></li>
+            <li><a href="friends.html"><i class="fa fa-link" style="color:#FFFFFF"></i>友链</a></li>
+            <li class="act"><a href="talk.html">留言板</a></li>
+            <li><a href="about.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"><i class="fa fa-subway" style="color:#FFFFFF"></i>开往</a></li>
+            <li><a href="atom.xml"><i class="fa fa-rss" style="color:#FFFFFF"></i>RSS</a></li>
+        </ul> <!-- 弹性网格row（内容） -->
+        <div class="row">
+            <div class="main">
+                <h2>留言板</h2>
+                <p>申请友情链接、对网站有任何疑问或者建议（同时也欢迎大家来闲聊），欢迎在此处留言</p>
+                <p>点击选择评论系统 <!--<button><a href="#Twikoo"><strong>Twikoo</strong></a></button>--> <button><a href="#Waline"><strong>Waline</strong></a></button> <button><a href="#Commento"><strong>Commento</strong></a></button> <button><a href="#Gitalk"><strong>Gitalk</strong></a></button></p> <!--
+<a name="Twikoo"></a>
+<p><h3>Twikoo</h3></p>
+<div id="tcomment"></div>
+<script src="https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js"></script>
+<script>
+twikoo.init({
+  envId: 'https://twikoo.bugcoder.gq/', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+  el: '#tcomment', // 容器元素
+  // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+  path: 'talk.html', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+  // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+})
+</script>
+<p>&nbsp;</p>
+--> <a name="Waline"></a>
+                <p></p>
+                <h3>Waline</h3>
+                <p></p>
+                <div id="waline"></div>
+                <script type="module">
+    import { init } from 'https://static.bugcoder.asia/js/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'waline.bugcoder.asia',
+      path: 'talk',
+      search: false,
+      dark: 'html[data-theme="dark"]',
+      reaction: [
+      'https://emoji.bugcoder.asia/bmoji/bmoji_hmm.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_wow.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_onlooker.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_doge.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_what.png',
+      ],
+      emoji: [
+      'https://emoji.bugcoder.asia/bmoji',
+      'https://emoji.bugcoder.asia/qq',
+      'https://emoji.bugcoder.asia/tieba',
+      'https://emoji.bugcoder.asia/oneshot',
+      ],
+    });
+  </script>
+                <p>&nbsp;</p> <a name="Commento"></a>
+                <h3>Commento</h3>
+                <div id="commento"></div>
+                <p>&nbsp;</p> <a name="Gitalk"></a>
+                <h3>Gitalk</h3>
+                <div id="gitalk-container"></div> <button onclick="topFunction()" id="BtnTop" title="回顶部">返回顶部</button>
+            </div><!-- 这里是main所对应的div -->
+        </div><!-- 页脚 -->
+        <div class="footer">
+            <p>Copyright © 2024 写bug的代码人</p>
+            <p>Developed by 写bug的代码人</p>
+            <p><a href="https://icp.gov.moe/?keyword=20230914" target="_blank">萌ICP备20230914号</a></p>
+            <p><i class="fa fa-cog fa-spin"></i> <span id="runtime_span"></span></p>
+            <p><a href="https://notbyai.fyi"><img src="img/Written-By-Human-Not-By-AI-Badge-white.svg" alt="Written by Human, Not by AI"></a> &nbsp; <a href="https://myssl.com/seal/detail?domain=bugcoder.asia"><img src="img/myssl.png" alt="MySSL安全认证" style="max-height:42px;margin:0 auto"></a></p>
+            <p><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"> <img src="img/travellingsLogo.gif" alt="开往-友链接力" width="120"> </a></p>
+        </div> <!--不太重要的引用文件-->
+        <script async src="https://analytics.umami.is/script.js" data-website-id="8fa97467-7636-45be-86c4-27951c22930a"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+        <script src="js/backTop.js"></script>
+        <script src="js/time.js" type="text/javascript"></script>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <!--各大评论系统-->
+        <link rel="stylesheet" href="css/waline.css">
+        <script defer src="https://commento.net/js/commento.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> <!--Gitalk-->
+        <script>
+var gitalk = new Gitalk({
+        clientID: '303bfc1b15c74584cfa4', //clientID 
+        clientSecret: '64abb5f184ed4c137d1fd9931f8466242e3ba250', //clientSecret
+        repo: 'gitalk-comments', // 评论仓库名
+        owner: '1stbugcoder',
+        admin: ['1stbugcoder'], //管理人
+        id: 'talk', // 返回当前 URL 的路径部分作为id
+        language:'zh-CN', //语言
+        distractionFreeMode: false  // 无干扰模式
+    })
+  gitalk.render('gitalk-container')
+</script>
+        <!-- darkmode -->
+<button id="theme-toggle"><img src="img/lightbulb.svg" alt="Switch" style="height:23px;   margin:0 auto;"></button>
+<script src="js/darkmoder.js"></script>
+    </body>
+</html>

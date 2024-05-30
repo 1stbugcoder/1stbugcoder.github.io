@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <link href="https://bugcoder.asia/atom.xml" rel="self" />
+
+    <link href="https://bugcoder.asia/" />
+    <id>https://bugcoder.asia/</id>
+    <title>写bug的代码人</title>
+    <subtitle>没有比这再简陋的网站了</subtitle>
+    <updated>2023-10-01T11:19:06+08:00</updated>
+    <author>
+        <name>写bug的代码人</name>
+        <uri>https://bugcoder.asia/</uri>
+    </author>
+    <logo>img/logo.jpg</logo>
+    <icon>img/icon.ico</icon>
+    <rights>Copyright © 2023 写bug的代码人</rights>
+    <entry>
+        <title>JavaScript实现友链随机顺序</title>
+        <link href="https://bugcoder.asia/article/019.html" />
+        <id>https://bugcoder.asia/article/019.html</id>
+        <updated>2023-10-02T21:25:00+08:00</updated>
+        <summary>（暂无摘要）</summary>
+    </entry>
+    <entry>
+        <title>Atom协议官方文档（中文版）</title>
+        <link href="https://bugcoder.asia/article/018.html" />
+        <id>https://bugcoder.asia/article/018.html</id>
+        <updated>2023-08-08T08:04:00+08:00</updated>
+        <summary>（可能是全网首发）Atom协议官方文档中文版</summary>
+    </entry>
+    <entry>
+        <title>盘点那些奇怪的错误（高一数学特供版）</title>
+        <link href="https://bugcoder.asia/article/017.html" />
+        <id>https://bugcoder.asia/article/017.html</id>
+        <updated>2023-07-22T11:12:00+08:00</updated>
+        <summary>一些奇怪的错误，站长已经无语了。。。</summary>
+    </entry>
+    <entry>
+        <title>重定向的两种方法</title>
+        <link href="https://bugcoder.asia/article/016.html" />
+        <id>https://bugcoder.asia/article/016.html</id>
+        <updated>2023-05-20T21:36:00+08:00</updated>
+        <summary>因为我的网站更换过平台，所以需要用重定向，分别有JS与HTML两种方法来实现重定向…</summary>
+    </entry>
+    <entry>
+        <title>测评夏储SD卡</title>
+        <link href="https://bugcoder.asia/article/015.html" />
+        <id>https://bugcoder.asia/article/015.html</id>
+        <updated>2023-04-30T10:56:00+08:00</updated>
+        <summary>因为老相机的需要，前两天入手了一张SD卡，只不过与以往不同的是，并没有用金士顿或闪迪的卡，而是…</summary>
+    </entry>
+    <entry>
+        <title>对比GitHub Pages和Cloudflare Pages</title>
+        <link href="https://bugcoder.asia/article/015.html" />
+        <id>https://bugcoder.asia/article/015.html</id>
+        <updated>2023-04-30T10:56:00+08:00</updated>
+        <summary>这两天偶然听说Cloudflare也有个Page服务，我一想，天下苦GitHub Pages久矣.咱就去评测下孰好孰坏…</summary>
+    </entry>
+</feed>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>预览图片 - 写bug的代码人</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* 预览图 */
+.preview-img {
+    display: none;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* 容器 */
+.preview-img .container {
+    max-width: 100%;
+    position: absolute;
+    padding: 1px;
+    background-color: #fafafa;   
+}
+
+/* 大图显示 */
+.preview-img .container img {
+    max-width: 100%;
+    background-size: contain/cover;
+}
+
+/* 关闭按钮 */
+.preview-img .container a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    text-decoration: none;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-family: Arial;
+    color: #fafafa;
+}
+</style>
+</head>
+<body>
+
+<h1>这是一个示例页面</h1>
+<p>该页面所实现的功能请转到文章 
+<a href="../article/003.html">JavaScript实现图片预览</a>
+</p>
+
+    
+<a href="javascript:;" onclick="showPreviewImg('https://www.w3school.com.cn/i/photo/tulip.jpg');ShowDescription('郁金香')">
+    <img src="https://www.w3school.com.cn/i/photo/tulip.jpg" alt="郁金香" width=100% height=auto>
+</a>
+<a href="javascript:;" onclick="showPreviewImg('https://www.w3school.com.cn/i/photo/tiyugongyuan.jpg');ShowDescription('绿茵场')">
+    <img src="https://www.w3school.com.cn/i/photo/tiyugongyuan.jpg" alt="绿茵场" width=100% height=auto>
+</a>
+    
+<!-- 预览图 -->
+<div class="preview-img">
+    <div class="container">
+        <!-- 显示的大图 -->
+        <img src="">
+        <!-- 关闭按钮 -->
+        <h1><a class="close" href="javascript:void(0);">×</a></h1>
+        <!-- 图片描述（此处的id仅是为了js更改内容） -->
+        <p id="captain">暂无图片描述</p> 
+    </div>   
+</div>
+    
+<script type="text/javascript">
+var mBody = document.querySelector("body");// 获取body
+var previewImg = document.querySelector(".preview-img");// 获取预览图
+var mContainer = document.querySelector(".preview-img .container");// 获取预览图显示区域
+var mImg = document.querySelector(".preview-img .container img");// 获取显示图片
+var mClose = document.querySelector(".preview-img .container .close");// 获取关闭按钮
+var mDescription = document.getElementById("captain");// 获取图片描述
+
+// 显示图片描述
+function ShowDescription(str){
+
+    // 更改描述
+    mDescription.innerHTML = str;
+}
+
+// 显示预览图
+function showPreviewImg(url) {
+        
+    // 设置图片路径
+    mImg.setAttribute("src", url);
+    // 设置为弹性布局
+    previewImg.style.display = "flex";
+    previewImg.style.justifyContent = "center";
+    previewImg.style.alignItems = "center";
+    // 设置预览图大小
+    setPreviewImgWH();
+    // 当弹出预览图时下面不允许滚动
+    mBody.style.overflow = "hidden"    
+}
+
+// 设置预览图大小
+function setPreviewImgWH() {
+
+    // 获取当前窗口宽度
+    let windowWidth = window.innerWidth;
+    // 获取当前窗口高度
+    let windowHeight = window.innerHeight;
+    // 判断当宽度小于高度时，使用宽度
+    if (windowWidth < windowHeight) {
+        // 设置图片宽高
+        mImg.style.width = windowWidth * 0.8 + "px";
+        mImg.style.height = "auto";
+    } else {
+        // 设置图片宽高
+        mImg.style.height = windowHeight * 0.8 + "px";
+        mImg.style.width = "auto";
+    }
+}
+
+// 关闭按钮点击事件
+mClose.onclick = function () {
+    closePreviewImg();
+}
+
+// 预览图上点击事件取消冒泡
+mContainer.onclick = function (event) {
+    event.stopPropagation();
+}
+
+// 点击预览图之外的地方 关闭预览图
+previewImg.onclick = function (event) {
+    closePreviewImg();
+}
+
+// 关闭预览图
+function closePreviewImg() {
+    previewImg.style.display = "none";
+    mBody.style.overflow = "scroll"
+}
+
+// 屏幕尺寸改变事件
+window.onresize = function () {
+    // 判断只有预览图显示的时候才设置大小
+    if (previewImg.style.display != "none") {
+        // 设置预览图大小
+        setPreviewImgWH();
+    }
+};
+</script>
+
+</body>
+</html>

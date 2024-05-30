@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-cn">
+    <head>
+        <title>JavaScript实现友链随机顺序 - 写bug的代码人</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="description" content="JavaScript实现友链随机顺序 - 写bug的代码人">
+        <link rel="icon" type="image/png" href="../img/icon.ico">
+        <link id="theme" rel="stylesheet" type="text/css" href="../css/article.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="header">
+            <a href="../index.html"> <img src="../img/logo.jpg" width="120" height="60" alt="LOGO"> </a>
+            <p></p>
+            <h1>写bug的代码人的博客</h1>
+        </div> <!-- 导航栏 -->
+        <ul class="navbar">
+            <li><a href="../index.html"><i class="fa fa-home" style="color:#FFFFFF"></i>主页</a></li>
+            <li><a href="../friends.html"><i class="fa fa-link" style="color:#FFFFFF"></i>友链</a></li>
+            <li><a href="../talk.html">留言板</a></li>
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"><i class="fa fa-subway" style="color:#FFFFFF"></i>开往</a></li>
+            <li><a href="../atom.xml"><i class="fa fa-rss" style="color:#FFFFFF"></i>RSS</a></li>
+        </ul>
+        <div class="row">
+            <div class="main">
+                <div id="viewer">
+                    <h2>JavaScript实现友链随机顺序</h2>
+                    <p>很久之前写的，最近时间比较紧张，只能先更新一下之前的东西</p>
+                    <p><strong>提示：</strong>为确保兼容性，请同时将友情链接代码写入html，不要完全靠JavaScript显示</p>
+                    <div class="code">
+                        <pre><span style="color: #008000;">//</span><span style="color: #008000;"> 定义信息</span>
+<span style="color: #0000ff;">var</span> friends =<span style="color: #000000;"> [];
+</span><span style="color: #0000ff;">var</span> bugcoder =<span style="color: #000000;"> {
+        </span>"href": "https://bugcoder.asia/"<span style="color: #000000;">,
+        </span>"name": "写bug的代码人"<span style="color: #000000;">,
+        </span>"avatar": "https://bugcoder.asia/headLogo.jpg"<span style="color: #000000;">,
+        </span>"description": "没有比这再简陋的网站了"<span style="color: #000000;">
+    };
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 这里将信息传入friends数组</span>
+friends[0] =<span style="color: #000000;"> bugcoder;
+
+</span><span style="color: #0000ff;">function</span><span style="color: #000000;"> create(name,img,link,des) {
+    </span><span style="color: #0000ff;">var</span> total =<span style="color: #000000;"> document.createDocumentFragment(),
+          temp </span>= document.createElement('div'<span style="color: #000000;">);
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 这里是友情链接的html代码</span>
+temp.innerHTML = '&lt;div class="article"&gt;&lt;h2&gt;&lt;span&gt;&lt;img width="12%" height="12%" src="' +img+ '"&gt;&lt;/span&gt;&lt;a href="' +link+ '"&gt;&amp;nbsp;' +name+ '&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;'+des+'&lt;/p&gt;&lt;/div&gt;'<span style="color: #000000;">;
+    </span><span style="color: #0000ff;">while</span><span style="color: #000000;"> (temp.firstChild) {
+        total.appendChild(temp.firstChild);
+      }
+        </span><span style="color: #0000ff;">return</span><span style="color: #000000;"> total;
+    }
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 打乱数组顺序</span>
+friends.sort(<span style="color: #0000ff;">function</span>(a, b){<span style="color: #0000ff;">return</span> 0.5 -<span style="color: #000000;"> Math.random()});
+
+</span><span style="color: #008000;">//</span><span style="color: #008000;"> 遍历数组</span>
+<span style="color: #0000ff;">var</span> i = 0<span style="color: #000000;">,
+    len </span>=<span style="color: #000000;"> friends.length;
+</span><span style="color: #0000ff;">while</span> (i &lt;<span style="color: #000000;"> len){
+    </span><span style="color: #0000ff;">var</span> name =<span style="color: #000000;"> friends[i].name;
+    </span><span style="color: #0000ff;">var</span> link =<span style="color: #000000;"> friends[i].href;
+    </span><span style="color: #0000ff;">var</span> img =<span style="color: #000000;"> friends[i].avatar;
+    </span><span style="color: #0000ff;">var</span> des =<span style="color: #000000;"> friends[i].description;
+    </span><span style="color: #0000ff;">var</span> link =<span style="color: #000000;"> create(name,img,link,des);
+    document.getElementById(</span>"links"<span style="color: #000000;">).appendChild(link);
+    i</span>++<span style="color: #000000;">;
+}</span></pre>
+                    </div>
+                    <p>&nbsp;</p>
+                    <p>Posted 2023-10-02 21:25 写bug的代码人</p>
+                    <p>本文标签：<button><a href="../tags.html#Js">JavaScript</a></button> <!--返回顶部按钮--> <button onclick="topFunction()" id="BtnTop" title="回顶部">返回顶部</button></p>
+                    <p><span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv">?</span>次</span></p>
+                </div>
+                <div class="notice">
+                    <p><strong>文章作者</strong> &nbsp; 写bug的代码人</p>
+                    <p><strong>文章链接</strong> &nbsp; <a href="https://bugcoder.asia/article/019.html">https://bugcoder.asia/article/019.html</a></p>
+                    <p><strong>声明</strong> &nbsp; 本博客中的所有文章均使用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">《署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)》</a>协议授权，转载需注明来源，所有代码均使用<a href="https://opensource.org/license/mit/">MIT开源协议</a></p>
+                </div>
+                <p>&nbsp;</p> <!--
+<div id="tcomment"></div>
+<script src="https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js"></script>
+<script>
+twikoo.init({
+  envId: 'https://bugcoder.zeabur.app/', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+  el: '#tcomment', // 容器元素
+  // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+  path: '016.html', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+  // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+})
+</script>-->
+                <div id="waline"></div>
+                <script type="module">
+    import { init } from 'https://static.bugcoder.asia/js/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'waline.bugcoder.asia',
+      path: window.location.pathname,
+      search: false,
+      reaction: [
+      'https://emoji.bugcoder.asia/bmoji/bmoji_hmm.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_wow.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_onlooker.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_doge.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_what.png',
+      ],
+      emoji: [
+      'https://emoji.bugcoder.asia/bmoji',
+      'https://emoji.bugcoder.asia/oneshot',
+      ],
+    });
+  </script>
+            </div> <!-- 这里是main所对应的div -->
+        </div><!-- 页脚 -->
+        <div class="footer">
+            <p>Copyright © 2024 写bug的代码人</p>
+            <p>Developed by 写bug的代码人</p>
+            <p><a href="https://icp.gov.moe/?keyword=20230914" target="_blank">萌ICP备20230914号</a></p>
+            <p><i class="fa fa-cog fa-spin"></i> <span id="runtime_span"></span></p>
+            <p></p>
+            <p><a href="https://notbyai.fyi"><img src="../img/Written-By-Human-Not-By-AI-Badge-white.svg" alt="Written by Human, Not by AI"></a> &nbsp; <a href="https://myssl.com/seal/detail?domain=bugcoder.asia"><img src="../img/myssl.png" alt="MySSL安全认证" style="max-height:42px;margin:0 auto"></a></p>
+            <p><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"> <img src="../img/travellingsLogo.gif" alt="开往-友链接力" width="120"> </a></p>
+            <p></p>
+        </div> <!--不太重要的引用文件-->
+        <script async src="https://analytics.umami.is/script.js" data-website-id="8fa97467-7636-45be-86c4-27951c22930a"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+        <script src="../js/backTop.js"></script>
+        <script src="../js/time.js" type="text/javascript"></script>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <link rel="stylesheet" href="../css/waline.css">
+<!-- darkmode -->
+<button id="theme-toggle"><img src="../img/lightbulb.svg" alt="Switch" style="height:23px;   margin:0 auto;"></button>
+<script src="../js/darkmode.js"></script>
+
+    </body>
+</html>

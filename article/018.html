@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="zh-cn">
+    <head>
+        <title>Atom协议官方文档（中文版） - 写bug的代码人</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="description" content="Atom协议官方文档（中文版） - 写bug的代码人">
+        <link rel="icon" type="image/png" href="../img/icon.ico">
+        <link id="theme" rel="stylesheet" type="text/css" href="../css/article.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body><!-- Header -->
+        <div class="header"><a href="../index.html"> <img src="../img/logo.jpg" width="120" height="60" alt="LOGO"> </a>
+            <p></p>
+            <h1>写bug的代码人的博客</h1>
+        </div> <!-- 导航栏 -->
+        <ul class="navbar">
+            <li><a href="../index.html"><i class="fa fa-home" style="color:#FFFFFF"></i>主页</a></li>
+            <li><a href="../friends.html"><i class="fa fa-link" style="color:#FFFFFF"></i>友链</a></li>
+            <li><a href="../talk.html">留言板</a></li>
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"><i class="fa fa-subway" style="color:#FFFFFF"></i>开往</a></li>
+            <li><a href="../atom.xml"><i class="fa fa-rss" style="color:#FFFFFF"></i>RSS</a></li>
+        </ul>
+        <div class="row">
+            <div class="main">
+                <h2>Atom协议官方文档（中文版）</h2>
+                <p>就在我更新网站的时候，突发奇想安弄一个Feed订阅，于是我就开始在网上寻找教程。可是网上的教程都是RSS标准，没有关于Atom标准的。经过半个小时的“探索式冲浪”之后我终于通过 RSS验证[1] 找到了 Syndication | Atom Enabled[2] ，可全是英文的，翻译又过于生硬（谷歌翻译的……emm,不作评价），所以我又重新翻译了一遍。</p>
+                <p>&nbsp;</p>
+                <p>正文开始</p>
+                <h3>什么是Atom</h3>
+                <p>Atom是一种基于XML的网络内容和元数据联合发布格式的名称，也是一种用于发布和编辑属于定期更新的网站的网络资源的应用程序级协议。</p>
+                <p>所有Atom feeds都必须是格式良好的XML文档，并通过application/atom+xml媒体类型进行标识。</p>
+                <p>&nbsp;</p>
+                <h3>关于此文档</h3>
+                <p>此文档的重点是由<a href="http://www.ietf.org/">IETF</a> <a href="http://www.ietf.org/html.charters/atompub-charter.html">AtomPub Working Group</a>提供的<a href="http://www.atomenabled.org/developers/syndication/atom-format-spec.php">Atom发布格式（The Atom Syndication Format）。</a></p>
+                <p>如果本文件与互联网草案不同，则以互联网草案为准。</p>
+                <p>&nbsp;一般注意事项：</p>
+                <p>本文档中描述的所有元素都必须位于http://www.w3.org/2005/Atom命名空间中。</p>
+                <p>Atom 中的所有时间标识都必须符合<a href="http://www.faqs.org/rfcs/rfc3339.html">RFC 3339</a>。</p>
+                <p>除非另有说明，所有值都必须是纯文本（即没有实体编码的 html）。</p>
+                <p><a href="http://www.w3.org/TR/REC-xml/#sec-lang-tag">xml:lang</a>可用于识别任何人类可读文本的语言。</p>
+                <p><a href="http://www.w3.org/TR/xmlbase/">xml:base</a>可用于控制解析相对URI的方式</p>
+                <p>&nbsp;</p>
+                <h3>Feed示例</h3>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;?</span><span style="color: #ff00ff;">xml version="1.0" encoding="utf-8"</span><span style="color: #0000ff;">?&gt;</span>
+<span style="color: #0000ff;">&lt;</span><span style="color: #800000;">feed </span><span style="color: #ff0000;">xmlns</span><span style="color: #0000ff;">="http://www.w3.org/2005/Atom"</span><span style="color: #0000ff;">&gt;</span>
+
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>Example Feed<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">link </span><span style="color: #ff0000;">href</span><span style="color: #0000ff;">="http://example.org/"</span><span style="color: #0000ff;">/&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">updated</span><span style="color: #0000ff;">&gt;</span>2003-12-13T18:30:02Z<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">updated</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">author</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>John Doe<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">author</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span>urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span>
+
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">entry</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>Atom-Powered Robots Run Amok<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">link </span><span style="color: #ff0000;">href</span><span style="color: #0000ff;">="http://example.org/2003/12/13/atom03"</span><span style="color: #0000ff;">/&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span>urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">updated</span><span style="color: #0000ff;">&gt;</span>2003-12-13T18:30:02Z<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">updated</span><span style="color: #0000ff;">&gt;</span>
+    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">summary</span><span style="color: #0000ff;">&gt;</span>Some text.<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">summary</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">entry</span><span style="color: #0000ff;">&gt;</span>
+
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">feed</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>&nbsp;</p>
+                <h3>&lt;feed&gt; 的元素</h3>
+                <p>Feed 由一些元数据组成，它后面可以跟任意数量的条目。</p>
+                <p>feed必需的元素</p>
+                <p>以下是feed中必需的元素的列表，每个元素都有简要描述和示例。</p>
+                <p>id&nbsp; &nbsp; 使用通用的，唯一且永久的URI来标记Feed。如果您的域名有长期、可续订的租约，那么您可以随意使用您的域名。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span>http://example.com/<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>title&nbsp; &nbsp; 包含Feed的可读标题。通常与关联网站的标题相同。该值不应为空。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>Example, Inc.<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>updated&nbsp; &nbsp; &nbsp; 表示上次对 Feed 进行重大修改的时间。<br></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">updated</span><span style="color: #0000ff;">&gt;</span>2003-12-13T18:30:02Z<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">updated</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>&nbsp;</p>
+                <h3>推荐的Feed元素</h3>
+                <p>如下， Atom 对 Feed 元素提出了许多您应该注意的其他要求和建议。</p>
+                <p>author&nbsp;&nbsp;指出提要的一位作者的姓名。一个提要可以有多个author元素。（除非所有元素都至少包含一个author元素，否则Feed 必须包含至少一个元素）。<a href="#person">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">author</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>John Doe<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">email</span><span style="color: #0000ff;">&gt;</span>JohnDoe@example.com<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">email</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">uri</span><span style="color: #0000ff;">&gt;</span>http://example.com/~johndoe<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">uri</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">author</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>link&nbsp;&nbsp;用于标识相关的网页。关系的类型由rel属性定义。在每个hreflang和type下，一个Feed只能有一个alternate值（原文：A feed is limited to one alternate per type and hreflang.）。Feed应包含返回Feed本身的链接。<a href="#link">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">link </span><span style="color: #ff0000;">rel</span><span style="color: #0000ff;">="self"</span><span style="color: #ff0000;"> href</span><span style="color: #0000ff;">="/feed"</span> <span style="color: #0000ff;">/&gt;</span></pre>
+                </div>
+                <p>&nbsp;</p>
+                <h3>可选的Feed元素</h3>
+                <p>以下是可选的Feed元素的列表</p>
+                <p>category&nbsp;&nbsp; 指定提要所属的类别。一个Feed可以有多个category元素。<a href="#category">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">category </span><span style="color: #ff0000;">term</span><span style="color: #0000ff;">="sports"</span><span style="color: #0000ff;">/&gt;</span></pre>
+                </div>
+                <p>contributor&nbsp;&nbsp;指定Feed的一位贡献者。一个Feed可以有多个contributor 元素。<a href="#person">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">contributor</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>Jane Doe<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">contributor</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>generator &nbsp;&nbsp;用标识用于生成Feed、调试和其他目的的软件。uri和version属性都是可选的。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">generator </span><span style="color: #ff0000;">uri</span><span style="color: #0000ff;">="/myblog.php"</span><span style="color: #ff0000;"> version</span><span style="color: #0000ff;">="1.0"</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+  Example Toolkit
+</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">generator</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>icon &nbsp;&nbsp;标识较小的图像，为Feed提供标志性的视觉识别。图标应该是方形的。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">icon</span><span style="color: #0000ff;">&gt;</span>/icon.jpg<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">icon</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>logo &nbsp;&nbsp;标识较大的图像，为Feed提供标志性的视觉识别。图像的宽度应是高度的两倍。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">logo</span><span style="color: #0000ff;">&gt;</span>/logo.jpg<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">logo</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>rights &nbsp;&nbsp;传达有关entry中所拥有的权利（例如版权）的信息。<a href="#text">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">rights</span><span style="color: #0000ff;">&gt;</span> © 2005 John Doe <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">rights</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>subtitle&nbsp;&nbsp; 包括可读的描述或副标题。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">subtitle</span><span style="color: #0000ff;">&gt;</span>all your examples are belong to us<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">subtitle</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>&nbsp;</p>
+                <h3>&lt;entry&gt; 的元素</h3>
+                <p>entry的一个示例是博客上的单个帖子。</p>
+                <p>&lt;entry&gt; 必需的元素</p>
+                <p>以下是所需的Feed元素的列表，每个元素都有简要说明和示例。</p>
+                <p>id&nbsp; &nbsp;使用通用的，唯一且永久的URI来标识条目。如果 Feed 中的两个entry在不同时间点表示相同的entry，则它们可以具有相同的 id 值。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span>http://example.com/blog/1234<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>title &nbsp;&nbsp;包含该entry的可读标题。该值不应为空。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>Atom-Powered Robots Run Amok<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>updated &nbsp;&nbsp;表示上次对entry进行重大修改的时间。该值在修复拼写错误后无需更改，只需进行实质性修改即可。通常情况下，Feed中的不同entry将具有不同的更新时间。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">updated</span><span style="color: #0000ff;">&gt;</span>2003-12-13T18:30:02-05:00<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">updated</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>&nbsp;</p>
+                <h3>&lt;entry&gt;的推荐元素</h3>
+                <p>Atom 对您应该注意的entry元素提出了许多附加要求和建议。它们如下：</p>
+                <p>author &nbsp;&nbsp;指出该entry的一位作者。一个条目可能有多个作者。一个entry必须至少包含一个author元素，除非封闭feed元素中存在author元素，或者封闭的source元素中存在author元素。<a href="#person">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">author</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>John Doe<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">author</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>content &nbsp;&nbsp;包含或链接到entry的完整内容。如果没有alternate链接则必须被提供，如果没有summary则应该被提供。<a href="#content">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">content</span><span style="color: #0000ff;">&gt;</span>complete story here<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">content</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>link &nbsp;&nbsp;标识相关网页。关系的类型由rel属性定义。在每个hreflang和type下，一个entry只能有一个alternate。若没有content元素，则必须包含alternate链接。<a href="#link">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">link </span><span style="color: #ff0000;">rel</span><span style="color: #0000ff;">="alternate"</span><span style="color: #ff0000;"> href</span><span style="color: #0000ff;">="/blog/1234"</span><span style="color: #0000ff;">/&gt;</span></pre>
+                </div>
+                <p>summary &nbsp;&nbsp;传达entry的简短概括、总结或摘录。如果没有为entry提供内容，或者该内容不是内联的（即包含 src 属性），或者内容是用 base64 编码的，则应提供摘要。<a href="#text">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">summary</span><span style="color: #0000ff;">&gt;</span>Sometext.<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">summary</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>&nbsp;</p>
+                <h3>&lt;entry&gt; 可选的元素</h3>
+                <p>以下是可选元素的列表。</p>
+                <p>category &nbsp;&nbsp;指定entry所属的类别。一个entry可以有多个category元素。<a href="#category">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">category </span><span style="color: #ff0000;">term</span><span style="color: #0000ff;">="technology"</span><span style="color: #0000ff;">/&gt;</span></pre>
+                </div>
+                <p>contributor&nbsp;&nbsp; 列出该entry的一位贡献者。一个条目可以有多个contributor元素。<a href="#person">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">contributor</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>Jane Doe<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">name</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">contributor</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>published &nbsp;&nbsp;包含entry的初始创建或首次可访问的时间。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">published</span><span style="color: #0000ff;">&gt;</span>2003-12-13T09:17:51-08:00<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">published</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>source&nbsp;&nbsp; 当entry从一个Feed复制到另一个Feed 中的，并且源feed包含任何一个子元素author、contributor、rights或category，且这些子元素不存在源entry中，则应保留源feed的元数据（除entry元素之外的所有的feed子元素）。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">source</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span>http://example.org/<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">id</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>Fourty-Two<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">updated</span><span style="color: #0000ff;">&gt;</span>2003-12-13T18:30:02Z<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">updated</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">rights</span><span style="color: #0000ff;">&gt;</span>© 2005 Example, Inc.<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">rights</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">source</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>rights &nbsp;&nbsp;传达有关entry中所拥有的权利（例如版权）的信息。<a href="#text">点击此处获取更多信息</a></p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">rights </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">="html"</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #ff0000;">&amp;amp;</span><span style="color: #000000;">copy; 2005 John Doe
+</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">rights</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>&nbsp;</p>
+                <h3>常见结构</h3> <a name="category"></a>
+                <h4>Category</h4>
+                <p>&lt;category&gt;具有一个必需属性term，以及两个可选属性scheme和label。</p>
+                <p>term用于标识类别</p>
+                <p>scheme通过URI标识分类体系。</p>
+                <p>label提供人类可读的显示标签</p>
+                <p>&nbsp;</p> <a name="content"></a>
+                <h4>Content</h4>
+                <p>&lt;content&gt;包含或链接到entry的完整内容。</p>
+                <p>在最常见的情况下，type属性是text、html、xhtml，在这种情况下，内容元素的定义与其他文本构造相同，如<a href="#text">这里</a>所述。</p>
+                <p>此外，如果该src属性存在，则表示可以找到内容的URI 。该type属性（如果存在）是内容的媒体类型。</p>
+                <p>&nbsp; &nbsp; &nbsp; 如果属性以或type结尾，则内联包含此类型的 xml 文档。+xml/xml</p>
+                <p>&nbsp; &nbsp; &nbsp; 如果type属性以 开头text，则内联包含此类型的转义文档。</p>
+                <p>&nbsp; &nbsp; &nbsp; 将内嵌包含指定媒体类型的<a href="http://www.faqs.org/rfcs/rfc3548.html">Base64</a>编码文档。</p>
+                <p>&nbsp;</p> <a name="link"></a>
+                <h4>Link</h4>
+                <p>&lt;link&gt;是按照 html 的 link 元素设计的。它有一个必需属性href和五个可选属性：rel、type、hreflang、title和length。</p>
+                <p>href是引用资源的URI（通常是网页）</p>
+                <p>rel包含单个链接关系类型。它可以是完整的URI（参考<a href="#extensibility">可扩展性</a>），或以下预定义值之一（默认值为alternate)：</p>
+                <p>alternate：条目或提要的替代表示形式，例如条目的 html 版本或博客首页的永久链接。</p>
+                <p>enclosure：相关资源的大小可能很大，可能需要特殊处理，例如音频或视频录制。</p>
+                <p>related：与条目或提要相关的文档。</p>
+                <p>self: 饲料本身。</p>
+                <p>via：条目中提供的信息来源。</p>
+                <p>type指示资源的媒体类型。</p>
+                <p>hreflang指示引用资源的语言。</p>
+                <p>title有关链接的人类可读信息，通常用于显示目的。</p>
+                <p>length资源的长度，以字节为单位。</p>
+                <p>&nbsp;</p> <a name="person"></a>
+                <h4>Person</h4>
+                <p>&lt;author&gt;和&lt;contributor&gt;描述个人、公司或类似的实体。它具有一个必需的元素name和两个可选的元素：uri、email。</p>
+                <p>&lt;name&gt;传达此人的名称。</p>
+                <p>&lt;uri&gt;包含此人的网站主页。</p>
+                <p>&lt;email&gt;包含此人的电子邮件地址。</p>
+                <p>&nbsp;</p> <a name="text"></a>
+                <h4>Text</h4>
+                <p>&lt;title&gt;、&lt;summary&gt;、&lt;content&gt;、 和&lt;rights&gt;包含人类可读的文本，通常数量很少。该type属性决定了该信息的编码方式（默认为“text”）</p>
+                <p>如果type="text"，则此元素包含纯文本，没有实体转义的 html。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">="text"</span><span style="color: #0000ff;">&gt;</span>AT<span style="color: #ff0000;">&amp;amp;</span>T bought by SBC!<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>如果type="html"，则该元素包含实体转义的 html。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">="html"</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+  AT</span><span style="color: #ff0000;">&amp;amp;</span>amp;T bought <span style="color: #ff0000;">&amp;lt;</span>b<span style="color: #ff0000;">&amp;gt;</span>by SBC<span style="color: #ff0000;">&amp;lt;</span>/b<span style="color: #ff0000;">&amp;gt;</span><span style="color: #000000;">!
+</span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>如果type="xhtml"，则此元素包含内联 xhtml，包装在 div 元素中。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">="xhtml"</span><span style="color: #0000ff;">&gt;</span>
+  <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">xmlns</span><span style="color: #0000ff;">="http://www.w3.org/1999/xhtml"</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">
+    AT</span><span style="color: #ff0000;">&amp;amp;</span>T bought <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">b</span><span style="color: #0000ff;">&gt;</span>by SBC<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">b</span><span style="color: #0000ff;">&gt;</span><span style="color: #000000;">!
+  </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span></pre>
+                </div>
+                <p>&nbsp;</p> <a name="extensibility"></a>
+                <h3>Atom扩展</h3>
+                <p>Atom 的content元素旨在支持直接包含其他 XML 词汇表。</p>
+                <p>任何完全限定的URI都可以用作link元素的 rel 属性的值。</p>
+                <p>来自其他名称空间的元素几乎可以包含在任何地方。这意味着大多数 RSS 1.0 和 RSS 2.0 模块都可以在 Atom 中使用。</p>
+                <p>&nbsp;</p>
+                <h4>参考资料</h4>
+                <p>&nbsp;&nbsp; [1] FEED Validator.&nbsp;<a href="https://www.feedvalidator.org/">FEED Validator</a>&nbsp;&nbsp;[引用日期&nbsp;2023年8月8日]</p>
+                <p>&nbsp;&nbsp; [2] Atom Enabled.&nbsp;<a href="http://www.atomenabled.org/syndication">Syndication|Atom Enabled</a>&nbsp;&nbsp;[引用日期&nbsp;2023年8月8日]</p>
+                <p>&nbsp;</p>
+                <p>Posted 2023-08-08 08:04 写bug的代码人</p>
+                <p>本文标签：<button><a href="../tags.html#rss">RSS订阅</a></button> <!--返回顶部按钮--> <button onclick="topFunction()" id="BtnTop" title="回顶部">返回顶部</button></p>
+                <p><span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv">?</span>次</span></p>
+                <div class="notice">
+                    <p><strong>翻译者</strong> &nbsp; 写bug的代码人</p>
+                    <p><strong>文章链接</strong> &nbsp; <a href="https://bugcoder.asia/article/018.html">https://bugcoder.asia/article/018.html</a></p>
+                    <p><strong>声明</strong> &nbsp; 本博客中的所有文章均使用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">《署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)》</a>协议授权，转载需注明来源</p>
+                    <p><strong>特殊声明</strong>&nbsp; 该文章由&nbsp;写bug的代码人&nbsp;翻译，翻译内容仅供参考，本文中所有内容以及代码的解释权归<a href="http://www.atomenabled.org/">Atom Enabled</a>所有</p>
+                </div>
+                <p>&nbsp;</p> <!--
+<div id="tcomment"></div>
+<script src="https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js"></script>
+<script>
+twikoo.init({
+  envId: 'https://bugcoder.zeabur.app/', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+  el: '#tcomment', // 容器元素
+  // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+  path: '017.html', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+  // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+})
+</script>-->
+                <div id="waline"></div>
+                <script type="module">
+    import { init } from 'https://static.bugcoder.asia/js/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'waline.bugcoder.asia',
+      path: window.location.pathname,
+      search: false,
+      reaction: [
+      'https://emoji.bugcoder.asia/bmoji/bmoji_hmm.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_wow.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_onlooker.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_doge.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_what.png',
+      ],
+      emoji: [
+      'https://emoji.bugcoder.asia/bmoji',
+      'https://emoji.bugcoder.asia/oneshot',
+      ],
+    });
+  </script>
+            </div><!-- 这里是main所对应的div -->
+        </div> <!-- 页脚 -->
+        <div class="footer">
+            <p>Copyright © 2024 写bug的代码人</p>
+            <p>Developed by 写bug的代码人</p>
+            <p><a href="https://icp.gov.moe/?keyword=20230914" target="_blank">萌ICP备20230914号</a></p>
+            <p><i class="fa fa-cog fa-spin"></i> <span id="runtime_span"></span></p>
+            <p></p>
+            <p><a href="https://notbyai.fyi"><img src="../img/Written-By-Human-Not-By-AI-Badge-white.svg" alt="Written by Human, Not by AI"></a> &nbsp; <a href="https://myssl.com/seal/detail?domain=bugcoder.asia"><img src="../img/myssl.png" alt="MySSL安全认证" style="max-height:42px;margin:0 auto"></a></p>
+            <p><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"> <img src="../img/travellingsLogo.gif" alt="开往-友链接力" width="120"> </a></p>
+            <p></p>
+        </div> <!--不太重要的引用文件-->
+        <script async src="https://analytics.umami.is/script.js" data-website-id="8fa97467-7636-45be-86c4-27951c22930a"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+        <script src="../js/backTop.js"></script>
+        <script src="../js/time.js" type="text/javascript"></script>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <link rel="stylesheet" href="../css/waline.css">
+<!-- darkmode -->
+<button id="theme-toggle"><img src="../img/lightbulb.svg" alt="Switch" style="height:23px;   margin:0 auto;"></button>
+<script src="../js/darkmode.js"></script>
+
+    </body>
+</html>

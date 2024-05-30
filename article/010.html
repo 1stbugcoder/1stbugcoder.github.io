@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-cn">
+    <head>
+        <title>Lambda函数——Python学习笔记 - 写bug的代码人</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="description" content="Lambda函数——Python学习笔记 - 写bug的代码人">
+        <link rel="icon" type="image/png" href="../img/icon.ico">
+        <link id="theme" rel="stylesheet" type="text/css" href="../css/article.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body><!-- Header -->
+        <div class="header">
+            <a href="../index.html"> <img src="../img/logo.jpg" width="120" height="60" alt="LOGO"> </a>
+            <p></p>
+            <h1>写bug的代码人的博客</h1>
+        </div> <!-- 导航栏 -->
+        <ul class="navbar">
+            <li><a href="../index.html"><i class="fa fa-home" style="color:#FFFFFF"></i>主页</a></li>
+            <li><a href="../friends.html"><i class="fa fa-link" style="color:#FFFFFF"></i>友链</a></li>
+            <li><a href="../talk.html">留言板</a></li>
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"><i class="fa fa-subway" style="color:#FFFFFF"></i>开往</a></li>
+            <li><a href="../atom.xml"><i class="fa fa-rss" style="color:#FFFFFF"></i>RSS</a></li>
+        </ul>
+        <div class="row">
+            <div class="main">
+                <h2>Lambda函数——Python学习笔记</h2> <i><p>lambda 函数是一种小的匿名函数。</p></i> <i><p>lambda 函数可接受任意数量的参数，但只能有一个表达式。</p></i>
+                <p>（from:<a href="https://www.w3school.com.cn/">W3School</a>）</p>
+                <p>下面给出一个简单的lambda函数</p>
+                <div class="code">
+                    <pre>x = <span style="color: #0000ff;">lambda</span> a : a + 10
+<span style="color: #0000ff;">print</span>(x(6))</pre>
+                </div>
+                <p>上面这段代码等价于下面这段代码</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">def</span><span style="color: #000000;"> y(a):
+    </span><span style="color: #0000ff;">return</span> a + 10
+    
+<span style="color: #0000ff;">print</span>(y(6))</pre>
+                </div>
+                <p>由此可见，lambda函数相对于普通函数来说要简洁的多。</p>
+                <p>lambda函数还可以这样用。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">def</span><span style="color: #000000;"> f(n):
+    </span><span style="color: #0000ff;">return</span> <span style="color: #0000ff;">lambda</span> a : a *<span style="color: #000000;"> n
+
+x </span>= f(2<span style="color: #000000;">)
+</span><span style="color: #008000;">#</span><span style="color: #008000;">等价于 x = lambda a : a * 2</span>
+<span style="color: #0000ff;">print</span>(x(5))  <span style="color: #008000;">#</span><span style="color: #008000;">打印10</span></pre>
+                </div>
+                <p>因此我们可以在同一个程序中使用lambda函数来定义许多不同的函数。</p>
+                <p>开篇我们已经提到lambda函数其实与def是一样的，那么究竟选择哪种呢？ 分别运行下面这两段代码几次，看一下他们各自的运行时间。</p>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">import</span><span style="color: #000000;"> time
+
+start </span>=<span style="color: #000000;"> time.time()
+
+i </span>=<span style="color: #000000;"> 0
+</span><span style="color: #0000ff;">while</span><span style="color: #000000;"> True:
+    x </span>= <span style="color: #0000ff;">lambda</span> a : a ** 10<span style="color: #000000;">
+    x(</span>2<span style="color: #000000;">)
+    i </span>+= 1
+    <span style="color: #0000ff;">if</span> i == 1000000<span style="color: #000000;">:
+        </span><span style="color: #0000ff;">break</span><span style="color: #000000;">
+
+end </span>=<span style="color: #000000;"> time.time()
+runTime </span>= end -<span style="color: #000000;"> start
+</span><span style="color: #0000ff;">print</span>(<span style="color: #800000;">"</span><span style="color: #800000;">运行时间：</span><span style="color: #800000;">"</span>, runTime, <span style="color: #800000;">"</span><span style="color: #800000;">秒</span><span style="color: #800000;">"</span>)</pre>
+                </div>
+                <div class="code">
+                    <pre><span style="color: #0000ff;">import</span><span style="color: #000000;"> time
+
+start </span>=<span style="color: #000000;"> time.time()
+
+i </span>=<span style="color: #000000;"> 0
+</span><span style="color: #0000ff;">while</span><span style="color: #000000;"> True:
+    </span><span style="color: #0000ff;">def</span><span style="color: #000000;"> y(a):
+        </span><span style="color: #0000ff;">return</span> a ** 10<span style="color: #000000;">
+    y(</span>2<span style="color: #000000;">)
+    i </span>+= 1
+    <span style="color: #0000ff;">if</span> i == 1000000<span style="color: #000000;">:
+        </span><span style="color: #0000ff;">break</span><span style="color: #000000;">
+
+end </span>=<span style="color: #000000;"> time.time()
+runTime </span>= end -<span style="color: #000000;"> start
+</span><span style="color: #0000ff;">print</span>(<span style="color: #800000;">"</span><span style="color: #800000;">运行时间：</span><span style="color: #800000;">"</span>, runTime, <span style="color: #800000;">"</span><span style="color: #800000;">秒</span><span style="color: #800000;">"</span>)</pre>
+                </div>
+                <p>从多次运行的结果，可以看到这两种函数运行100万次的时间大概都是1.1秒（运行环境：Pydroid 3 ，由QAIU汉化，Python3.9.7）。<strong>所以说这两种方法哪种都可以，主要是看个人习惯与对于代码的要求（要求可读性强就用def，要求简洁就用lambda函数）。</strong></p>
+                <p>&nbsp;</p>
+                <p>Posted 2023-01-19 11:28 写bug的代码人</p>
+                <p>本文标签：<button><a href="../tags.html#Python">Python</a></button></p> <!--返回顶部按钮--> <button onclick="topFunction()" id="BtnTop" title="回顶部">返回顶部</button>
+                <p><span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv">?</span>次</span></p>
+                <div class="notice">
+                    <p><strong>文章作者</strong> &nbsp; 写bug的代码人</p>
+                    <p><strong>文章链接</strong> &nbsp; <a href="https://bugcoder.asia/article/010.html">https://bugcoder.asia/article/010.html</a></p>
+                    <p><strong>声明</strong> &nbsp; 本博客中的所有文章均使用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">《署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)》</a>协议授权，转载需注明来源，所有代码均使用<a href="https://opensource.org/license/mit/">MIT开源协议</a></p>
+                </div>
+                <p>&nbsp;</p> <!--
+<div id="tcomment"></div>
+<script src="https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js"></script>
+<script>
+twikoo.init({
+  envId: 'https://bugcoder.zeabur.app/', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+  el: '#tcomment', // 容器元素
+  // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+  path: '010.html', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+  // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+})
+</script>-->
+                <div id="waline"></div>
+                <script type="module">
+    import { init } from 'https://static.bugcoder.asia/js/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'waline.bugcoder.asia',
+      path: window.location.pathname,
+      search: false,
+      reaction: [
+      'https://emoji.bugcoder.asia/bmoji/bmoji_hmm.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_wow.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_onlooker.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_doge.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_what.png',
+      ],
+      emoji: [
+      'https://emoji.bugcoder.asia/bmoji',
+      'https://emoji.bugcoder.asia/oneshot',
+      ],
+    });
+  </script>
+            </div><!-- 这里是main所对应的div -->
+        </div><!-- 页脚 -->
+        <div class="footer">
+            <p>Copyright © 2024 写bug的代码人</p>
+            <p>Developed by 写bug的代码人</p>
+            <p><a href="https://icp.gov.moe/?keyword=20230914" target="_blank">萌ICP备20230914号</a></p>
+            <p><i class="fa fa-cog fa-spin"></i> <span id="runtime_span"></span></p>
+            <p><a href="https://notbyai.fyi"><img src="../img/Written-By-Human-Not-By-AI-Badge-white.svg" alt="Written by Human, Not by AI"></a> &nbsp; <a href="https://myssl.com/seal/detail?domain=bugcoder.asia"><img src="../img/myssl.png" alt="MySSL安全认证" style="max-height:42px;margin:0 auto"></a></p>
+            <p><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"> <img src="../img/travellingsLogo.gif" alt="开往-友链接力" width="120"> </a></p>
+        </div> <!--不太重要的引用文件-->
+        <script async src="https://analytics.umami.is/script.js" data-website-id="8fa97467-7636-45be-86c4-27951c22930a"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+        <script src="../js/backTop.js"></script>
+        <script src="../js/time.js" type="text/javascript"></script>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <link rel="stylesheet" href="../css/waline.css">
+<!-- darkmode -->
+<button id="theme-toggle"><img src="../img/lightbulb.svg" alt="Switch" style="height:23px;   margin:0 auto;"></button>
+<script src="../js/darkmode.js"></script>
+    </body>
+</html>

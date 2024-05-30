@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-cn">
+    <head>
+        <title>应急嵌入页面--Waline评论系统</title>
+        <link rel="stylesheet" href="css/waline.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+/*Waline Css变量*/
+:root {
+    --waline-font-size: 1rem;
+  /*  --waline-white: #fff;
+    --waline-light-grey: #999;
+    --waline-dark-grey: #666;*/
+    --waline-theme-color: #27ae60;
+    --waline-active-color: #2ecc71;
+ /*   --waline-color: #444;
+    --waline-bgcolor: #fff;
+    --waline-bgcolor-light: #f8f8f8;
+    --waline-bgcolor-hover: #f0f0f0;
+    --waline-border-color: #ddd;
+    --waline-disable-bgcolor: #f8f8f8;
+    --waline-disable-color: #000;*/
+    --waline-code-bgcolor: #282c34;
+  /*  --waline-bq-color: #f0f0f0;*/
+    --waline-avatar-size: 3.25rem;
+    --waline-m-avatar-size: calc(var(--waline-avatar-size) * 9 / 13);
+    --waline-badge-color: #3498db;
+    --waline-badge-font-size: 0.75em;
+  /*  --waline-info-bgcolor: #f8f8f8;
+    --waline-info-color: #999;*/
+    --waline-info-font-size: 0.625em;
+    --waline-border: 1px solid var(--waline-border-color);
+    --waline-avatar-radius: 50%;
+    --waline-box-shadow: none
+  /* 常规颜色 */
+  --waline-white: #000;
+  --waline-light-grey: #666;
+  --waline-dark-grey: #999;
+
+  /* 布局颜色 */
+  --waline-color: #666666;
+  --waline-bg-color: #1e1e1e;
+  --waline-bg-color-light: #272727;
+  --waline-border-color: #333;
+  --waline-disable-bg-color: #444;
+  --waline-disable-color: #272727;
+
+  /* 特殊颜色 */
+  --waline-bq-color: #272727;
+
+  /* 其他颜色 */
+  --waline-info-bg-color: #272727;
+  --waline-info-color: #666;
+
+}
+</style>
+
+
+    </head>
+    <body>
+        <p id="demo"></p>
+        <div id="waline"></div>
+        <script type="module">
+  // 获取URL中的search部分
+  const pageUrl = window.location.href;
+  const url = new URL(pageUrl);
+  var pagePath = url.searchParams.get('path');
+
+  // 异常处理
+  if (pagePath == "" || pagePath ==" "){
+      var pagePath = "Error";
+        }
+  import { init } from 'https://static.bugcoder.asia/js/waline.mjs';
+
+  init({
+      el: '#waline',
+      serverURL: 'waline.bugcoder.asia',
+      path: pagePath,
+      search: false,
+      reaction: [
+      'https://emoji.bugcoder.asia/bmoji/bmoji_hmm.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_wow.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_onlooker.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_doge.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_what.png',
+      ],
+      emoji: [
+      'https://emoji.bugcoder.asia/bmoji',
+      'https://emoji.bugcoder.asia/oneshot',
+      ],
+  });
+  
+  
+  // 获取该页面的高度
+window.setInterval(function() {
+
+// 获取该页面的高度（不是窗口!）
+var h = document.body.clientHeight;
+
+document.getElementById("demo").innerHTML = "页面高度为"+h;
+
+}, 1000);
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-cn">
+    <head>
+        <title>免费配置cloudflare的cdn加速+ERR_TOO_MANY_REDIRECTS报错解决 - 写bug的代码人</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta name="description" content="免费配置cloudflare的cdn加速+ERR_TOO_MANY_REDIRECTS报错解决 - 写bug的代码人">
+        <link rel="icon" type="image/png" href="../img/icon.ico">
+        <link id="theme" rel="stylesheet" type="text/css" href="../css/article.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="header"><a href="../index.html"> <img src="../img/logo.jpg" width="120" height="60" alt="LOGO"> </a>
+            <p></p>
+            <h1>写bug的代码人的博客</h1>
+        </div> <!-- 导航栏 -->
+        <ul class="navbar">
+            <li><a href="../index.html"><i class="fa fa-home" style="color:#FFFFFF"></i>主页</a></li>
+            <li><a href="../friends.html"><i class="fa fa-link" style="color:#FFFFFF"></i>友链</a></li>
+            <li><a href="../talk.html">留言板</a></li>
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"><i class="fa fa-subway" style="color:#FFFFFF"></i>开往</a></li>
+            <li><a href="../atom.xml"><i class="fa fa-rss" style="color:#FFFFFF"></i>RSS</a></li>
+        </ul>
+        <div class="row">
+            <div class="main">
+                <div id="viewer">
+                    <h2>免费配置cloudflare的cdn加速+ERR_TOO_MANY_REDIRECTS报错解决</h2>
+                    <p>为了白嫖cloudflare的cdn加速，我决定将DNS解析从DNSPOD转到cloudflare。</p>
+                    <h3>配置cloudflare</h3>
+                    <h4>第一步：注册（略）</h4>
+                    <h4>第二步：跟着下面图片里的一步步来</h4> <img src="https://static.bugcoder.asia/img/005_1.jpg" height="auto" width="100%" alt="第二步1"> <img src="https://static.bugcoder.asia/img/005_2.jpg" height="auto" width="100%" alt="第二步2">
+                    <p>到这里就OK了！好的，试试效果，看一下效果怎么样。</p>
+                    <h3>ERR_TOO_MANY_REDIRECTS报错解决</h3> <img src="https://static.bugcoder.asia/img/005_3.jpg" height="auto" width="100%" alt="ERR_TOO_MANY_REDIRECTS">
+                    <p>结果不出意外的......</p>
+                    <p><strong>出意外了！</strong>报错<strong>ERR_TOO_MANY_REDIRECTS</strong>，翻译过来就是重定向过多。来，百度（请勿laugh at me）一下，向大佬请教下。</p>
+                    <p>大神<a href="https://www.heartnn.com/2018/11/17/resolve-err-too-many-redirects-on-cloudflare/">heartnn</a>是这样说的：</p>
+                    <p><i><strong>问题找到了，由于我的博客托管在Github，首先去掉Github Pages设置里的Enforce HTTPS选项，因为这里http会被强制跳转到https，而Cloudflare的Flexible SSL选项需要阅读原始服务器的http数据，然后进行加密，再传送过来，如果原始服务器返回https的话，Cloudflare会丢弃https数据，然后再继续请求，这就是造成问题的元凶。</strong></i></p>
+                    <p>我理解的更简单来说就是：<i>cloudflare需要http的数据，而GitHub Page只提供https，没得到数据，就会反复请求，进而引发错误。</i>总之，关了Enforce HTTPS（强制HTTPS）就可以了</p> <img src="https://static.bugcoder.asia/img/005_4.jpg" height="auto" width="100%" alt="关闭Enforce HTTPS">
+                    <p>来，再试试</p>
+                    <p>又双叒叕出问题了！！！http的请求没问题，https的请求仍报错，我到cloudflare琢磨了一会，发现没开这个（见下图）</p> <img src="https://static.bugcoder.asia/img/005_5.jpg" height="auto" width="100%" alt="开启https">
+                    <p>打开后就正常了（无语&amp;黑线ing）</p>
+                    <p>&nbsp;</p>
+                    <p>Posted 2023-01-14 15:39 写bug的代码人</p>
+                    <p>本文标签：<button><a href="../tags.html#run">网站运维</a></button></p> <!--返回顶部按钮--> <button onclick="topFunction()" id="BtnTop" title="回顶部">返回顶部</button>
+                    <p><span id="busuanzi_container_page_pv">本文总阅读量<span id="busuanzi_value_page_pv">?</span>次</span></p>
+                    <div class="notice">
+                        <p><strong>文章作者</strong> &nbsp; 写bug的代码人</p>
+                        <p><strong>文章链接</strong> &nbsp; <a href="https://bugcoder.asia/article/005.html">https://bugcoder.asia/article/005.html</a></p>
+                        <p><strong>声明</strong> &nbsp; 本博客中的所有文章均使用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">《署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)》</a>协议授权，转载需注明来源，所有代码均使用<a href="https://opensource.org/license/mit/">MIT开源协议</a></p>
+                    </div>
+                    <p>&nbsp;</p> <!--
+<div id="tcomment"></div>
+<script src="https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js"></script>
+<script>
+twikoo.init({
+  envId: 'https://bugcoder.zeabur.app/', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+  el: '#tcomment', // 容器元素
+  // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+  path: '005.html', // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+  // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
+})
+</script>-->
+                    <div id="waline"></div>
+                    <script type="module">
+    import { init } from 'https://static.bugcoder.asia/js/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'waline.bugcoder.asia',
+      path: window.location.pathname,
+      search: false,
+      reaction: [
+      'https://emoji.bugcoder.asia/bmoji/bmoji_hmm.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_wow.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_onlooker.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_doge.png',
+      'https://emoji.bugcoder.asia/bmoji/bmoji_what.png',
+      ],
+      emoji: [
+      'https://emoji.bugcoder.asia/bmoji',
+      'https://emoji.bugcoder.asia/oneshot',
+      ],
+    });
+  </script>
+                </div>
+            </div><!-- 这里是main所对应的div -->
+        </div><!-- 页脚 -->
+        <div class="footer">
+            <p>Copyright © 2024 写bug的代码人</p>
+            <p>Developed by 写bug的代码人</p>
+            <p><a href="https://icp.gov.moe/?keyword=20230914" target="_blank">萌ICP备20230914号</a></p>
+            <p><i class="fa fa-cog fa-spin"></i> <span id="runtime_span"></span></p>
+            <p><a href="https://notbyai.fyi"><img src="../img/Written-By-Human-Not-By-AI-Badge-white.svg" alt="Written by Human, Not by AI"></a> &nbsp; <a href="https://myssl.com/seal/detail?domain=bugcoder.asia"><img src="../img/myssl.png" alt="MySSL安全认证" style="max-height:42px;margin:0 auto"></a></p>
+            <p><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"> <img src="../img/travellingsLogo.gif" alt="开往-友链接力" width="120"> </a></p>
+        </div> <!--不太重要的引用文件-->
+        <script async src="https://analytics.umami.is/script.js" data-website-id="8fa97467-7636-45be-86c4-27951c22930a"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+        <script src="../js/backTop.js"></script>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script src="../js/time.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="../css/waline.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.3/viewer.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.3/viewer.min.js"></script>
+        <script type="text/javascript">
+    // 图片预览
+    var viewer = new Viewer(document.getElementById('viewer'));
+</script>
+<!-- darkmode -->
+<button id="theme-toggle"><img src="../img/lightbulb.svg" alt="Switch" style="height:23px;   margin:0 auto;"></button>
+<script src="../js/darkmode.js"></script>
+
+    </body>
+</html>
